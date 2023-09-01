@@ -2,9 +2,12 @@
   "name": "cimaca-web-app",
   "version": "0.1.0",
   "private": true,
+  "prisma": {
+    "seed": "ts-node prisma/seed.ts"
+  },
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "npx prisma migrate deploy && npx prisma generate && prisma db seed && next build",
     "start": "next start",
     "lint": "next lint",
     "lint:fix": "next lint --fix"
@@ -31,6 +34,7 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "sass": "^1.66.1",
+    "ts-node": "^10.9.1",
     "yup": "^1.2.0"
   },
   "devDependencies": {
