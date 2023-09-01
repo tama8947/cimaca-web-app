@@ -1,0 +1,19 @@
+name: Develop Deploy
+on:
+  push:
+    branches:
+      - develop
+jobs:
+  Explore-Github-Actions:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+      - name: Install Dependencies
+        run: npm install
+      - name: Create Build  
+        run: npm run build
+
+        
+      
