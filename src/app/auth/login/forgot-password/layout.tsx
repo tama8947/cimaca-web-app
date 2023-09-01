@@ -1,4 +1,4 @@
-import { ChildContainerProps } from "@/components/global_types/types";
+import { ChildContainerProps } from "@/components/global-types/types";
 
 const Layout = ({ children }: ChildContainerProps) => {  
   return (

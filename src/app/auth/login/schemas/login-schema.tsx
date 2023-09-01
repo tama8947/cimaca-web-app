@@ -1,5 +1,5 @@
 import { object, string } from "yup";
-import { TypeLoginData } from "../types/login_types";
+import { TypeLoginData } from "../types/login-types";
 const emailInvalidmessage =
   "El formato de email debe ser válido, ejemplo: micorreo@dominio.com";
 const fieldsValidations = {

@@ -8,12 +8,12 @@ import "primereact/resources/primereact.min.css";
 import "primeflex/primeflex.min.css";
 import "primeicons/primeicons.css";
 import { SessionProvider } from "next-auth/react";
-import "@/components/layouts/AppLayout/styles/layout.scss";
+import "@/components/layouts/app-layout/styles/layout.scss";
 
 import { useRef } from "react";
 import { Toast } from "primereact/toast";
-import { NotificationContext } from "@/components/layouts/AppLayout/contexts/custom-context";
-import { LayoutProvider } from "@/components/layouts/AppLayout/contexts/layout-context";
+import { NotificationContext } from "@/components/layouts/app-layout/contexts/custom-context";
+import { LayoutProvider } from "@/components/layouts/app-layout/contexts/layout-context";
 
 const inter = Inter({ subsets: ["latin"] });
 

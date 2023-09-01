@@ -1,5 +1,5 @@
 import { FormikTouched } from "formik";
-import { FormikInstanceLogin, TypeLoginData } from "../../types/login_types";
+import { FormikInstanceLogin, TypeLoginData } from "../../types/login-types";
 
 type NameInput = keyof FormikTouched<TypeLoginData>;
 type ParamsFocusErrorFunction = {

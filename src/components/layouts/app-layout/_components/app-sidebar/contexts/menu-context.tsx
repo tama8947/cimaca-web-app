@@ -1,5 +1,5 @@
 "use client";
-import { MenuContextProps } from "@/components/global_types/layout";
+import { MenuContextProps } from "@/components/global-types/layout";
 import React, { useState, createContext } from "react";
 import { ChildContainerProps } from "../../../types/types";
 

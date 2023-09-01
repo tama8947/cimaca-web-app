@@ -1,10 +1,10 @@
 import { InputText } from "primereact/inputtext";
 import { Password } from "primereact/password";
-import { Dispatch, SetStateAction, useEffect } from "react";
-import ErrorMsg from "@/components/atoms/ErrorMsg";
-import "./styles/card_components.scss";
-import { FormikInstanceLogin } from "../../types/login_types";
-import { focusOnError } from "../functions/custom_behaviour";
+import { useEffect } from "react";
+import ErrorMsg from "@/components/atoms/error-msg";
+import "./styles/card-components.scss";
+import { FormikInstanceLogin } from "../../types/login-types";
+import { focusOnError } from "../functions/custom-behaviour";
 import Image from "next/image";
 export const TitleCard = () => {
   return (
@@ -79,7 +79,7 @@ export const CardInputs = ({formikInstance,loading}: CardInputProps) => {
         <a
           className="font-medium no-underline ml-0 text-right cursor-pointer"
           style={{ color: "var(--primary-color)" }}
-          href="/auth/login/forgot_password"
+          href="/auth/login/forgot-password"
         >
           ¿Has olvidado tu contraseña?
         </a>

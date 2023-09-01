@@ -11,13 +11,11 @@ import { LayoutContext } from "../../contexts/layout-context";
 import { AppTopbarRef } from "../../types/types";
 import { Menu } from "primereact/menu";
 import "./styles/_topbar.scss";
-import { MenuLoginData } from "./_components/menus_data";
-import { useRouter } from "next/navigation";
+import { menuLoginData } from "./custom-data/menus-data";
 
 const AppTopBar = forwardRef<AppTopbarRef>((props, ref) => {
-  const { layoutConfig, layoutState, onMenuToggle, showProfileSidebar } =
+  const { layoutState, onMenuToggle, showProfileSidebar } =
     useContext(LayoutContext);
-   const router=useRouter()
   const menubuttonRef = useRef(null);
   const topbarmenuRef = useRef(null);
   const topbarmenubuttonRef = useRef(null);
@@ -70,7 +68,7 @@ const AppTopBar = forwardRef<AppTopbarRef>((props, ref) => {
             layoutState?.profileSidebarVisible,
         })}
       >
-        <Menu popup  ref={loginMenu} model={MenuLoginData}></Menu>
+        <Menu popup ref={loginMenu} model={menuLoginData}></Menu>
         <button type="button" className="p-link layout-topbar-button">
           <i className="pi pi-calendar"></i>
           <span>Calendar</span>

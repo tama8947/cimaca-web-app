@@ -1,6 +1,6 @@
 import { signOut } from "next-auth/react";
 
-export const MenuLoginData=[
+export const menuLoginData=[
     {
         label: 'Opciones de usuario',
         items: [

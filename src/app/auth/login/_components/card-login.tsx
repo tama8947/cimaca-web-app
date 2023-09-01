@@ -1,16 +1,16 @@
 "use client";
-import { LayoutContext } from "@/components/layouts/AppLayout/contexts/layout-context";
+import { LayoutContext } from "@/components/layouts/app-layout/contexts/layout-context";
 import { useRouter } from "next/navigation";
 import { classNames } from "primereact/utils";
 import { useContext, useState } from "react";
 import { Button } from "primereact/button";
 
 import { FormikConfig, useFormik } from "formik";
-import { TypeLoginData } from "../types/login_types";
-import { initialValuesLoginSchema, loginSchema } from "../schemas/login_schema";
-import { NotificationContext } from "@/components/layouts/AppLayout/contexts/custom-context";
-import { submitAction } from "./functions/cardlogin_actions";
-import { CardInputs, TitleCard } from "./_components_card_login/card_components";
+import { TypeLoginData } from "../types/login-types";
+import { initialValuesLoginSchema, loginSchema } from "../schemas/login-schema";
+import { NotificationContext } from "@/components/layouts/app-layout/contexts/custom-context";
+import { submitAction } from "./functions/cardlogin-actions";
+import { CardInputs, TitleCard } from "./_components-card-login/card-components";
 
 const CardLogin = () => {
   const [loading, setLoading] = useState(false);

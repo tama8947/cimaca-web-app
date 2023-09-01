@@ -10,16 +10,16 @@ import {
   AppTopbarRef,
   ChildContainerProps,
   Page,
-} from "@/components/layouts/AppLayout/types/types";
+} from "@/components/layouts/app-layout/types/types";
 import {
   useMenuOutsideClickListener,
   useProfileMenuOutsideClickListener,
-} from "./events/layout_event_listeners";
-import { blockBodyScroll } from "./functions/layout_actions";
-import { containerClass } from "./functions/layout_css_dynamic_class";
+} from "./events/layout-event-listeners";
+import { blockBodyScroll } from "./functions/layout-actions";
+import { containerClass } from "./functions/layout-css-dynamic-class";
 import { LayoutContext } from "./contexts/layout-context";
-import AppTopBar from "./_components/AppTopbar/AppTopbar";
-import AppSidebar from "./_components/AppSidebar/AppSidebar";
+import AppTopBar from "./_components/app-topbar/app-topbar";
+import AppSidebar from "./_components/app-sidebar/app-sidebar";
 
 type Props = ChildContainerProps & {
   Component: Page;

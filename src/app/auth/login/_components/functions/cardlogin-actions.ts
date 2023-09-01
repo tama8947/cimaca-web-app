@@ -1,9 +1,9 @@
 import { signIn } from "next-auth/react";
-import { focusOnError } from "./custom_behaviour";
+import { focusOnError } from "./custom-behaviour";
 import { AppRouterInstance } from "next/dist/shared/lib/app-router-context";
 import { Dispatch, MutableRefObject, SetStateAction } from "react";
 import { Toast } from "primereact/toast";
-import { TypeLoginData } from "../../types/login_types";
+import { TypeLoginData } from "../../types/login-types";
 type SubmitActionFunction = {
   setLoading: Dispatch<SetStateAction<boolean>>;
   data: TypeLoginData;

@@ -1,5 +1,5 @@
 import { LayoutState } from "../types/types";
-import { LayoutContextProps } from "@/components/global_types/layout";
+import { LayoutContextProps } from "@/components/global-types/layout";
 
 // useEffect(() => {
 //   const url = pathname + searchParams.toString();

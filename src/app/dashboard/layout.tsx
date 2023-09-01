@@ -1,7 +1,7 @@
 "use client";
-import { ChildContainerProps } from "@/components/global_types/types";
-import AppLayout from "@/components/layouts/AppLayout/AppLayout";
-import "@/components/layouts/AppLayout/styles/layout.scss"
+import { ChildContainerProps } from "@/components/global-types/types";
+import AppLayout from "@/components/layouts/app-layout/app-layout";
+import "@/components/layouts/app-layout/styles/layout.scss"
 
 const Layout = ({ children }: ChildContainerProps) => {
   return (

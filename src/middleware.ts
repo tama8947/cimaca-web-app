@@ -8,7 +8,7 @@ const loginRedirect = (request: NextRequest, session: JWT | null) => {
 };
 
 const logoutRedirect = (request: NextRequest, session: JWT | null) => {
-  if (Boolean(!session?.name))
+  if (!session?.name)
     return NextResponse.redirect(new URL("/auth/login", request.url));
   else NextResponse.next()
 };

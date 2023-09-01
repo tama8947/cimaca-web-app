@@ -1,7 +1,7 @@
 import { useEventListener } from "primereact/hooks";
 import { AppTopbarRef, LayoutContextProps } from "../types/types";
 import { RefObject } from "react";
-import { hideMenu, hideProfileMenu } from "../functions/layout_actions";
+import { hideMenu, hideProfileMenu } from "../functions/layout-actions";
 
 export const useProfileMenuOutsideClickListener = (
   topbarRef: RefObject<AppTopbarRef>,

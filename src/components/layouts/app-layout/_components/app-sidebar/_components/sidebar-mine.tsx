@@ -7,7 +7,7 @@ import Link from "next/link";
 const Sidebar = () => {
   const [isOpen, setIsOpen] = useState(true);
 
-  const sidebar_animation = {
+  const sidebarAnimation = {
     open: {
       width: "16rem",
       transition: {
@@ -24,7 +24,7 @@ const Sidebar = () => {
 
   return (
     <motion.div
-      variants={sidebar_animation}
+      variants={sidebarAnimation}
       animate={isOpen ? "open" : "close"}
       className="bg-white text-black  shadow-xl z-[999] w-[16rem] max-w-[18-rem] h-screen overflow-hidden md:relative fixed"
     >
