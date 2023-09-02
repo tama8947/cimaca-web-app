@@ -4,12 +4,14 @@ import { AppRouterInstance } from "next/dist/shared/lib/app-router-context";
 import { Dispatch, MutableRefObject, SetStateAction } from "react";
 import { Toast } from "primereact/toast";
 import { TypeLoginData } from "../../types/login-types";
+
 type SubmitActionFunction = {
   setLoading: Dispatch<SetStateAction<boolean>>;
   data: TypeLoginData;
   router: AppRouterInstance;
   toast: MutableRefObject<Toast | null> | undefined;
 };
+
 export const submitAction = ({
   setLoading,
   data,

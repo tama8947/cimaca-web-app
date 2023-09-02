@@ -6,6 +6,7 @@ import "./styles/card-components.scss";
 import { FormikInstanceLogin } from "../../types/login-types";
 import { focusOnError } from "../functions/custom-behaviour";
 import Image from "next/image";
+
 export const TitleCard = () => {
   return (
     <div className="text-center mb-5">
@@ -26,6 +27,7 @@ type CardInputProps = {
   loading: boolean;
   formikInstance: FormikInstanceLogin;
 };
+
 export const CardInputs = ({formikInstance,loading}: CardInputProps) => {
   useEffect(()=>focusOnError({formikInstance}),[formikInstance])
   return (
