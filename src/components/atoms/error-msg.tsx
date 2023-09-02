@@ -1,9 +1,7 @@
-import React from 'react'
-type PropsErrorMsg={msg: string |undefined}
-function ErrorMsg(props:PropsErrorMsg) {
-  return (
-    <small className='p-error'>{props.msg??""}</small>
-  )
-}
+import React from "react";
 
-export default ErrorMsg
+type PropsErrorMsg = { msg: string | undefined };
+
+export default function ErrorMsg(props: PropsErrorMsg) {
+  return <small className="p-error">{props.msg ?? ""}</small>;
+}
