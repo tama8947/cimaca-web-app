@@ -1,6 +1,9 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 // import React, { ReactNode } from 'react';
 import {
+  type ChildContainerProps
+} from '../../components/layouts/app-layout/types/types';
+import {
   type AppBreadcrumbProps,
   // AppBreadcrumbState,
   type AppConfigProps,
@@ -41,6 +44,6 @@ export type {
   NodeRef,
   AppTopbarRef,
   AppMenuItemProps,
-  // ChildContainerProps,
+  ChildContainerProps,
   AppMenuItem
 };
