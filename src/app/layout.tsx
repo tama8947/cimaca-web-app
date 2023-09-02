@@ -1,26 +1,24 @@
-"use client";
+'use client';
 
-import { Inter } from "next/font/google";
+import { Inter } from 'next/font/google';
+import { SessionProvider } from 'next-auth/react';
+import 'primeflex/primeflex.min.css';
+import 'primeicons/primeicons.css';
+import 'primereact/resources/primereact.min.css';
+import 'primereact/resources/themes/lara-light-indigo/theme.css';
+import { Toast } from 'primereact/toast';
+import { useRef } from 'react';
+import { NotificationContext } from '@/components/layouts/app-layout/contexts/custom-context';
+import { LayoutProvider } from '@/components/layouts/app-layout/contexts/layout-context';
+import '@/components/layouts/app-layout/styles/layout.scss';
+import './globals.css';
 
-import "./globals.css";
-import "primereact/resources/themes/lara-light-indigo/theme.css";
-import "primereact/resources/primereact.min.css";
-import "primeflex/primeflex.min.css";
-import "primeicons/primeicons.css";
-import "@/components/layouts/app-layout/styles/layout.scss";
+const inter = Inter({ subsets: ['latin'] });
 
-import { SessionProvider } from "next-auth/react";
-import { useRef } from "react";
-import { Toast } from "primereact/toast";
-import { NotificationContext } from "@/components/layouts/app-layout/contexts/custom-context";
-import { LayoutProvider } from "@/components/layouts/app-layout/contexts/layout-context";
-
-const inter = Inter({ subsets: ["latin"] });
-
-export default function RootLayout({
-  children,
+export default function RootLayout ({
+  children
 }: {
-  children: React.ReactNode;
+  children: React.ReactNode
 }) {
   const toastRef = useRef<Toast>(null);
   return (

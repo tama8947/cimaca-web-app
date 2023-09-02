@@ -1,39 +1,35 @@
-"use client";
+'use client';
 
-import { useContext, useEffect, useRef } from "react";
-
-import { useMountEffect, useUnmountEffect } from "primereact/hooks";
-import PrimeReact from "primereact/api";
-
-import React from "react";
+import PrimeReact from 'primereact/api';
+import { useMountEffect, useUnmountEffect } from 'primereact/hooks';
+import React, { useContext, useEffect, useRef } from 'react';
 import {
-  AppTopbarRef,
-  ChildContainerProps,
-  Page,
-} from "@/components/layouts/app-layout/types/types";
+  type AppTopbarRef,
+  type ChildContainerProps
+  // type Page
+} from '@/components/layouts/app-layout/types/types';
+import AppSidebar from './_components/app-sidebar/app-sidebar';
+import AppTopBar from './_components/app-topbar/app-topbar';
+import { LayoutContext } from './contexts/layout-context';
 import {
   useMenuOutsideClickListener,
-  useProfileMenuOutsideClickListener,
-} from "./events/layout-event-listeners";
-import { blockBodyScroll } from "./functions/layout-actions";
-import { containerClass } from "./functions/layout-css-dynamic-class";
-import { LayoutContext } from "./contexts/layout-context";
-import AppTopBar from "./_components/app-topbar/app-topbar";
-import AppSidebar from "./_components/app-sidebar/app-sidebar";
+  useProfileMenuOutsideClickListener
+} from './events/layout-event-listeners';
+import { blockBodyScroll } from './functions/layout-actions';
+import { containerClass } from './functions/layout-css-dynamic-class';
 
-type Props = ChildContainerProps & {
-  Component: Page;
-};
+// type Props = ChildContainerProps & {
+//   Component: Page
+// }
 
-const Layout = ({ children }: ChildContainerProps) => {
+function Layout ({ children }: ChildContainerProps) {
   const { layoutConfig, layoutState, setLayoutState } =
     useContext(LayoutContext);
   const topbarRef = useRef<AppTopbarRef>(null);
   const sidebarRef = useRef<HTMLDivElement>(null);
-
   const {
     bindProfileMenuOutsideClickListener,
-    unbindProfileMenuOutsideClickListener,
+    unbindProfileMenuOutsideClickListener
   } = useProfileMenuOutsideClickListener(topbarRef, setLayoutState);
   const { bindMenuOutsideClickListener, unbindMenuOutsideClickListener } =
     useMenuOutsideClickListener({ topbarRef, sidebarRef }, setLayoutState);
@@ -50,7 +46,7 @@ const Layout = ({ children }: ChildContainerProps) => {
   }, [
     layoutState?.overlayMenuActive,
     layoutState?.staticMenuMobileActive,
-    bindMenuOutsideClickListener,
+    bindMenuOutsideClickListener
   ]);
 
   useEffect(() => {
@@ -80,6 +76,6 @@ const Layout = ({ children }: ChildContainerProps) => {
       </main>
     </>
   );
-};
+}
 
 export default Layout;

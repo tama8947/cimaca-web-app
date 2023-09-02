@@ -1,18 +1,18 @@
-"use client";
-import { MenuContextProps } from "@/components/global-types/layout";
-import React, { useState, createContext } from "react";
-import { ChildContainerProps } from "../../../types/types";
+'use client';
+import React, { createContext, useState } from 'react';
+import { type MenuContextProps } from '@/components/global-types/layout';
+import { type ChildContainerProps } from '../../../types/types';
 
-
+// eslint-disable-next-line @typescript-eslint/consistent-type-assertions
 export const MenuContext = createContext({} as MenuContextProps);
 
-export const MenuProvider = ({ children }: ChildContainerProps) => {
-  const [activeMenu, setActiveMenu] = useState("");
+export function MenuProvider ({ children }: ChildContainerProps) {
+  const [activeMenu, setActiveMenu] = useState('');
 
   const value = {
     activeMenu,
-    setActiveMenu,
+    setActiveMenu
   };
 
   return <MenuContext.Provider value={value}>{children}</MenuContext.Provider>;
-};
+}

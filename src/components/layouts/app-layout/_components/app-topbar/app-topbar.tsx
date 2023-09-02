@@ -1,17 +1,17 @@
-"use client";
-import Link from "next/link";
+'use client';
+import Link from 'next/link';
+import { Menu } from 'primereact/menu';
+import { classNames } from 'primereact/utils';
 import React, {
   forwardRef,
   useContext,
   useImperativeHandle,
-  useRef,
-} from "react";
-import { classNames } from "primereact/utils";
-import { LayoutContext } from "../../contexts/layout-context";
-import { AppTopbarRef } from "../../types/types";
-import { Menu } from "primereact/menu";
-import "./styles/_topbar.scss";
-import { menuLoginData } from "./custom-data/menus-data";
+  useRef
+} from 'react';
+import { LayoutContext } from '../../contexts/layout-context';
+import { type AppTopbarRef } from '../../types/types';
+import { menuLoginData } from './custom-data/menus-data';
+import './styles/_topbar.scss';
 
 const AppTopBar = forwardRef<AppTopbarRef>((props, ref) => {
   const { layoutState, onMenuToggle, showProfileSidebar } =
@@ -23,9 +23,9 @@ const AppTopBar = forwardRef<AppTopbarRef>((props, ref) => {
   const loginMenu = useRef<Menu>(null);
 
   useImperativeHandle(ref, () => ({
-    menubutton: menubuttonRef.current,
-    topbarmenu: topbarmenuRef.current,
-    topbarmenubutton: topbarmenubuttonRef.current,
+    menubutton       : menubuttonRef.current,
+    topbarmenu       : topbarmenuRef.current,
+    topbarmenubutton : topbarmenubuttonRef.current
   }));
 
   return (
@@ -63,9 +63,9 @@ const AppTopBar = forwardRef<AppTopbarRef>((props, ref) => {
 
       <div
         ref={topbarmenuRef}
-        className={classNames("layout-topbar-menu", {
-          "layout-topbar-menu-mobile-active":
-            layoutState?.profileSidebarVisible,
+        className={classNames('layout-topbar-menu', {
+          'layout-topbar-menu-mobile-active':
+            layoutState?.profileSidebarVisible
         })}
       >
         <Menu popup ref={loginMenu} model={menuLoginData}></Menu>
@@ -92,5 +92,5 @@ const AppTopBar = forwardRef<AppTopbarRef>((props, ref) => {
   );
 });
 
-AppTopBar.displayName = "AppTopbar";
+AppTopBar.displayName = 'AppTopbar';
 export default AppTopBar;

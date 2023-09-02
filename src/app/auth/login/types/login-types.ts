@@ -1,6 +1,6 @@
-import { InferType } from "yup";
-import { loginSchema } from "../schemas/login-schema";
-import { useFormik } from "formik";
+import { type useFormik } from 'formik';
+import { type InferType } from 'yup';
+import { type loginSchema } from '../schemas/login-schema';
 
 export type TypeLoginData = InferType<typeof loginSchema>
 

@@ -1,13 +1,13 @@
-import { InputText } from "primereact/inputtext";
-import { Password } from "primereact/password";
-import { useEffect } from "react";
-import ErrorMsg from "@/components/atoms/error-msg";
-import "./styles/card-components.scss";
-import { FormikInstanceLogin } from "../../types/login-types";
-import { focusOnError } from "../functions/custom-behaviour";
-import Image from "next/image";
+import Image from 'next/image';
+import { InputText } from 'primereact/inputtext';
+import { Password } from 'primereact/password';
+import { useEffect } from 'react';
+import ErrorMsg from '@/components/atoms/error-msg';
+import { type FormikInstanceLogin } from '../../types/login-types';
+import { focusOnError } from '../functions/custom-behaviour';
+import './styles/card-components.scss';
 
-export const TitleCard = () => {
+export function TitleCard () {
   return (
     <div className="text-center mb-5">
       <Image
@@ -21,15 +21,15 @@ export const TitleCard = () => {
       <span className="text-600 font-medium">Inicia sesión para continuar</span>
     </div>
   );
-};
+}
 
-type CardInputProps = {
-  loading: boolean;
-  formikInstance: FormikInstanceLogin;
-};
+interface CardInputProps {
+  loading: boolean
+  formikInstance: FormikInstanceLogin
+}
 
-export const CardInputs = ({formikInstance,loading}: CardInputProps) => {
-  useEffect(()=>focusOnError({formikInstance}),[formikInstance])
+export function CardInputs ({ formikInstance, loading }: CardInputProps) {
+  useEffect(() => { focusOnError({ formikInstance }); }, [formikInstance]);
   return (
     <>
       <div className="flex flex-column ">
@@ -42,7 +42,7 @@ export const CardInputs = ({formikInstance,loading}: CardInputProps) => {
           type="text"
           autoFocus
           disabled={loading}
-          onChange={ formikInstance?.handleChange}       
+          onChange={ formikInstance?.handleChange}
           value={formikInstance?.values?.email}
           placeholder="Email address"
           className="inputfocus p-inputtext-sm w-full  mt-2"
@@ -57,9 +57,9 @@ export const CardInputs = ({formikInstance,loading}: CardInputProps) => {
       </label>
       <Password
         name="password"
-        inputId="password"    
-        disabled={loading}    
-        onChange={ formikInstance?.handleChange}       
+        inputId="password"
+        disabled={loading}
+        onChange={ formikInstance?.handleChange}
         value={formikInstance?.values?.password}
         placeholder="Password"
         feedback={false}
@@ -67,7 +67,7 @@ export const CardInputs = ({formikInstance,loading}: CardInputProps) => {
         className="w-full custom-input-password flex align-items-center mt-2 p-inputtext-sm "
         inputClassName="inputfocus w-full  md:w-30rem"
       ></Password>
-      <ErrorMsg msg={formikInstance?.errors?.password}  />
+      <ErrorMsg msg={formikInstance?.errors?.password} />
       <div className="flex align-items-center justify-content-between mb-5 gap-5">
         {/* <div className="flex align-items-center">
           <Checkbox
@@ -80,7 +80,7 @@ export const CardInputs = ({formikInstance,loading}: CardInputProps) => {
         </div> */}
         <a
           className="font-medium no-underline ml-0 text-right cursor-pointer"
-          style={{ color: "var(--primary-color)" }}
+          style={{ color: 'var(--primary-color)' }}
           href="/auth/login/forgot-password"
         >
           ¿Has olvidado tu contraseña?
@@ -88,4 +88,4 @@ export const CardInputs = ({formikInstance,loading}: CardInputProps) => {
       </div>
     </>
   );
-};
+}

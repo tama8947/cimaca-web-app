@@ -1,37 +1,38 @@
-"use client";
+'use client';
+import Link from 'next/link';
 import {
-  useRouter,
-  usePathname,
-  useParams,
-  useSearchParams,
-} from "next/navigation";
-import Link from "next/link";
-import { Ripple } from "primereact/ripple";
-import { classNames } from "primereact/utils";
-import React, { useEffect, useContext, useRef } from "react";
-import { CSSTransition } from "react-transition-group";
-import { MenuContext } from "../contexts/menu-context";
-import { AppMenuItemProps } from "../../../types/types";
+  // useParams,
+  usePathname
+  // useRouter,
+  // useSearchParams
+} from 'next/navigation';
+import { Ripple } from 'primereact/ripple';
+import { classNames } from 'primereact/utils';
+// import React, { useContext, useEffect, useRef } from 'react';
+import React, { useContext } from 'react';
+import { CSSTransition } from 'react-transition-group';
+import { type AppMenuItemProps } from '../../../types/types';
+import { MenuContext } from '../contexts/menu-context';
 
-const AppMenuItemMap = (props: AppMenuItemProps) => {
+function AppMenuItemMap (props: AppMenuItemProps) {
   const { activeMenu, setActiveMenu } = useContext(MenuContext);
-  const router = useRouter();
+  // const router = useRouter();
   const pathname = usePathname();
-  const searchParams = useSearchParams();
+  // const searchParams = useSearchParams();
   const item = props.item;
   const key = props.parentKey
-    ? props.parentKey + "-" + props.index
+    ? props.parentKey + '-' + props.index
     : String(props.index);
-  const isActiveRoute = item!.to && pathname === item!.to;
-  const active = activeMenu === key || activeMenu.startsWith(key + "-");
+  const isActiveRoute = item?.to && pathname === item.to;
+  const active = activeMenu === key || activeMenu.startsWith(key + '-');
 
   // useEffect(() => {
-  //   if (item!.to && pathname === item!.to) {
+  //   if (item?.to && pathname === item?.to) {
   //     setActiveMenu(key);
   //   }
 
   //   const onRouteChange = (url: string) => {
-  //     if (item!.to && item!.to === url) {
+  //     if (item?.to && item?.to === url) {
   //       setActiveMenu(key);
   //     }
   //   };
@@ -51,31 +52,31 @@ const AppMenuItemMap = (props: AppMenuItemProps) => {
   const itemClick = (
     event: React.MouseEvent<HTMLAnchorElement, MouseEvent>
   ) => {
-    //avoid processing disabled items
-    if (item!.disabled) {
+    // avoid processing disabled items
+    if (item?.disabled) {
       event.preventDefault();
       return;
     }
 
-    //execute command
-    if (item!.command) {
-      item!.command({ originalEvent: event, item: item });
+    // execute command
+    if (item?.command) {
+      item?.command({ originalEvent: event, item });
     }
 
     // toggle active state
-    if (item!.items) setActiveMenu(active ? (props.parentKey as string) : key);
+    if (item?.items) setActiveMenu(active ? (props.parentKey as string) : key);
     else setActiveMenu(key);
   };
 
-  const subMenu = item!.items && item!.visible !== false && (
+  const subMenu = item?.items && item?.visible !== false && (
     <CSSTransition
       timeout={{ enter: 1000, exit: 450 }}
       classNames="layout-submenu"
       in={props.root ? true : active}
-      key={item!.label}
+      key={item?.label}
     >
       <ul>
-        {item!.items.map((child, i) => {
+        {item?.items.map((child, i) => {
           return (
             <AppMenuItemMap
               item={child}
@@ -93,53 +94,57 @@ const AppMenuItemMap = (props: AppMenuItemProps) => {
   return (
     <li
       className={classNames({
-        "layout-root-menuitem": props.root,
-        "active-menuitem": active,
+        'layout-root-menuitem' : props.root,
+        'active-menuitem'      : active
       })}
     >
-      {props.root && item!.visible !== false && (
-        <div className="layout-menuitem-root-text">{item!.label}</div>
+      {props.root && item?.visible !== false && (
+        <div className="layout-menuitem-root-text">{item?.label}</div>
       )}
-      {(!item!.to || item!.items) && item!.visible !== false ? (
+      {(!item?.to || item?.items) && item?.visible !== false
+        ? (
         <a
-          href={item!.url}
-          onClick={(e) => itemClick(e)}
-          className={classNames(item!.class, "p-ripple")}
-          target={item!.target}
+          href={item?.url}
+          onClick={(e) => { itemClick(e); }}
+          className={classNames(item?.class, 'p-ripple')}
+          target={item?.target}
           tabIndex={0}
         >
-          <i className={classNames("layout-menuitem-icon", item!.icon)}></i>
-          <span className="layout-menuitem-text">{item!.label}</span>
-          {item!.items && (
+          <i className={classNames('layout-menuitem-icon', item?.icon)}></i>
+          <span className="layout-menuitem-text">{item?.label}</span>
+          {item?.items && (
             <i className="pi pi-fw pi-angle-down layout-submenu-toggler"></i>
           )}
           <Ripple />
         </a>
-      ) : null}
+          )
+        : null}
 
-      {item!.to && !item!.items && item!.visible !== false ? (
+      {item?.to && !item?.items && item?.visible !== false
+        ? (
         <Link
-          href={item!.to}
-          replace={item!.replaceUrl}
-          target={item!.target}
-          onClick={(e) => itemClick(e)}
-          className={classNames(item!.class, "p-ripple", {
-            "active-route": isActiveRoute,
+          href={item?.to}
+          replace={item?.replaceUrl}
+          target={item?.target}
+          onClick={(e) => { itemClick(e); }}
+          className={classNames(item?.class, 'p-ripple', {
+            'active-route': isActiveRoute
           })}
           tabIndex={0}
         >
-          <i className={classNames("layout-menuitem-icon", item!.icon)}></i>
-          <span className="layout-menuitem-text">{item!.label}</span>
-          {item!.items && (
+          <i className={classNames('layout-menuitem-icon', item?.icon)}></i>
+          <span className="layout-menuitem-text">{item?.label}</span>
+          {item?.items && (
             <i className="pi pi-fw pi-angle-down layout-submenu-toggler"></i>
           )}
           <Ripple />
         </Link>
-      ) : null}
+          )
+        : null}
 
       {subMenu}
     </li>
   );
-};
+}
 
 export default AppMenuItemMap;

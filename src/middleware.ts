@@ -1,35 +1,31 @@
-import { NextResponse } from "next/server";
-import type { NextRequest } from "next/server";
-import { JWT, getToken } from "next-auth/jwt";
+import { NextResponse } from 'next/server';
+import { getToken, type JWT } from 'next-auth/jwt';
+import type { NextRequest } from 'next/server';
 
 const loginRedirect = (request: NextRequest, session: JWT | null) => {
-  if (session?.name)
-    return NextResponse.redirect(new URL("/dashboard", request.url));
+  if (session?.name) { return NextResponse.redirect(new URL('/dashboard', request.url)); }
 };
 
 const logoutRedirect = (request: NextRequest, session: JWT | null) => {
-  if (!session?.name)
-    return NextResponse.redirect(new URL("/auth/login", request.url));
-  else NextResponse.next()
+  if (!session?.name) { return NextResponse.redirect(new URL('/auth/login', request.url)); } else NextResponse.next();
 };
 
 const thereIsSession = async (request: NextRequest) => {
   const session = await getToken({
-    req: request,
-    secret: process.env.NEXTAUTH_SECRET,
+    req    : request,
+    secret : process.env.NEXTAUTH_SECRET
   });
   return session;
 };
 
 const excludedRoutes = (pathName: string) =>
-  !pathName.includes("/auth/login") && !pathName.includes("create_recovery_token")
+  !pathName.includes('/auth/login') && !pathName.includes('create_recovery_token');
 
-export async function middleware(request: NextRequest) {
+export async function middleware (request: NextRequest) {
   const session = await thereIsSession(request);
-  const pathName = request.nextUrl.pathname;   
-  if (pathName == "/")
-    return NextResponse.redirect(new URL("/auth/login", request.url));
-  if (pathName.includes("/auth/login")) return loginRedirect(request, session);
+  const pathName = request.nextUrl.pathname;
+  if (pathName === '/') { return NextResponse.redirect(new URL('/auth/login', request.url)); }
+  if (pathName.includes('/auth/login')) return loginRedirect(request, session);
   if (excludedRoutes(pathName)) return logoutRedirect(request, session);
   return NextResponse.next();
 }
@@ -37,5 +33,5 @@ export async function middleware(request: NextRequest) {
 // See "Matching Paths" below to learn more
 export const config = {
   // matcher: '/about/:path*',
-  matcher: ["/", "/auth/login", '/((?!api|_next/static|_next/image|favicon.ico).*)',],
+  matcher: ['/', '/auth/login', '/((?!api|_next/static|_next/image|favicon.ico).*)']
 };

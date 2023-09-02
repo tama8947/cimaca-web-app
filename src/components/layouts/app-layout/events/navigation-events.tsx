@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import { useEffect } from "react";
-import { usePathname, useSearchParams } from "next/navigation";
+import { usePathname, useSearchParams } from 'next/navigation';
+import { useEffect } from 'react';
 
-export function NavigationEvents() {
+export function NavigationEvents () {
   const pathname = usePathname();
   const searchParams = useSearchParams();
 

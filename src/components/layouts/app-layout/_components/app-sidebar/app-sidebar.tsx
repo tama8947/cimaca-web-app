@@ -1,11 +1,9 @@
-"use client";
+'use client';
 
-import { Page } from "../../types/types";
-import AppMenu from "./_components/app-menu";
-import "./styles/_menu.scss"
+// import { type Page } from '../../types/types';
+import AppMenu from './_components/app-menu';
+import './styles/_menu.scss';
 
-const AppSidebar: Page = () => {
+export default function AppSidebar () {
   return <AppMenu />;
 };
-
-export default AppSidebar;

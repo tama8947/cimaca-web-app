@@ -1,6 +1,6 @@
-import CardLogin from "./_components/card-login";
+import CardLogin from './_components/card-login';
 
-export default function Login(){
+export default function Login () {
   return (
     <div className="w-full">
       <CardLogin />

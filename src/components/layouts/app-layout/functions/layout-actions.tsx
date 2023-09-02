@@ -1,5 +1,5 @@
-import { LayoutState } from "../types/types";
-import { LayoutContextProps } from "@/components/global-types/layout";
+import { type LayoutContextProps } from '@/components/global-types/layout';
+import { type LayoutState } from '../types/types';
 
 // useEffect(() => {
 //   const url = pathname + searchParams.toString();
@@ -10,53 +10,52 @@ import { LayoutContextProps } from "@/components/global-types/layout";
 //   }
 // }, [router]);
 
-
 export const unblockBodyScroll = (): void => {
   if (document.body.classList) {
-    document.body.classList.remove("blocked-scroll");
+    document.body.classList.remove('blocked-scroll');
   } else {
     document.body.className = document.body.className.replace(
       new RegExp(
-        "(^|\\b)" + "blocked-scroll".split(" ").join("|") + "(\\b|$)",
-        "gi"
+        '(^|\\b)' + 'blocked-scroll'.split(' ').join('|') + '(\\b|$)',
+        'gi'
       ),
-      " "
+      ' '
     );
   }
 };
 
 export const blockBodyScroll = (): void => {
   if (document.body.classList) {
-    document.body.classList.add("blocked-scroll");
+    document.body.classList.add('blocked-scroll');
   } else {
-    document.body.className += " blocked-scroll";
+    document.body.className += ' blocked-scroll';
   }
 };
 
-type ParamsHideProfileMenu = {
-  setLayoutState: LayoutContextProps["setLayoutState"];
-  unbindProfileMenuOutsideClickListener: () => void;
-};
+interface ParamsHideProfileMenu {
+  setLayoutState: LayoutContextProps['setLayoutState']
+  unbindProfileMenuOutsideClickListener: () => void
+}
 export const hideProfileMenu = (
   paramsHideProfileMenu: ParamsHideProfileMenu
 ) => {
   paramsHideProfileMenu.setLayoutState((prevLayoutState: LayoutState) => ({
     ...prevLayoutState,
-    profileSidebarVisible: false,
+    profileSidebarVisible: false
   }));
   paramsHideProfileMenu.unbindProfileMenuOutsideClickListener();
 };
 
-type ParamsHideMenu = {
-  setLayoutState: LayoutContextProps["setLayoutState"];
-  unbindMenuOutsideClickListener: () => void;
-};
+interface ParamsHideMenu {
+  setLayoutState: LayoutContextProps['setLayoutState']
+  unbindMenuOutsideClickListener: () => void
+}
 export const hideMenu = (paramsHideMenu: ParamsHideMenu) => {
   paramsHideMenu.setLayoutState((prevLayoutState: LayoutState) => ({
     ...prevLayoutState,
-    overlayMenuActive: false,
-    staticMenuMobileActive: false,
-    menuHoverActive: false,
+    overlayMenuActive      : false,
+    staticMenuMobileActive : false,
+    menuHoverActive        : false
   }));
   paramsHideMenu.unbindMenuOutsideClickListener();
   unblockBodyScroll();
