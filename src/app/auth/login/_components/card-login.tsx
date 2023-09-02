@@ -10,7 +10,10 @@ import { TypeLoginData } from "../types/login-types";
 import { initialValuesLoginSchema, loginSchema } from "../schemas/login-schema";
 import { NotificationContext } from "@/components/layouts/app-layout/contexts/custom-context";
 import { submitAction } from "./functions/cardlogin-actions";
-import { CardInputs, TitleCard } from "./_components-card-login/card-components";
+import {
+  CardInputs,
+  TitleCard,
+} from "./_components-card-login/card-components";
 
 const CardLogin = () => {
   const [loading, setLoading] = useState(false);

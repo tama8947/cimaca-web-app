@@ -1,7 +1,5 @@
-import React from "react";
 
-const References = () => {
+export default function References() {
   return <div>References</div>;
 };
 
-export default References;
