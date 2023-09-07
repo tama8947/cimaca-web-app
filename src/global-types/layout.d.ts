@@ -4,7 +4,7 @@ import { type Dispatch, type HTMLAttributeAnchorTarget, type ReactElement, type 
 import type React from 'react';
 
 /* Next & Layout Types */
-type Page<P = {}> = NextPage<P> & {
+type Page<P = object> = NextPage<P> & {
   getLayout?: (page: ReactElement) => ReactNode
 }
 

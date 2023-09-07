@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React, { useState } from 'react';
 
-function Sidebar () {
+export default function Sidebar () {
   const [isOpen, setIsOpen] = useState(true);
 
   const sidebarAnimation = {
@@ -100,5 +100,3 @@ function Sidebar () {
     </motion.div>
   );
 }
-
-export default Sidebar;

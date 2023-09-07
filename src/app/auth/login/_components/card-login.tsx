@@ -11,18 +11,23 @@ import { type TypeLoginData } from '../types/login-types';
 import {
   CardInputs,
   TitleCard
-} from './_components-card-login/card-components';
+} from './_components-card-login/components-card-login';
 import { submitAction } from './functions/cardlogin-actions';
+import './styles/card-login.scss';
 
-function CardLogin () {
+export default function CardLogin () {
   const [loading, setLoading] = useState(false);
+
   const { layoutConfig } = useContext(LayoutContext);
-  const router = useRouter();
   const toast = useContext(NotificationContext);
+
+  const router = useRouter();
+
   const containerClassName = classNames(
-    'surface-ground flex w-full align-items-center justify-content-center min-h-screen min-w-screen overflow-hidden',
+    'card-login surface-ground flex w-full align-items-center justify-content-center min-h-screen min-w-screen overflow-hidden',
     { 'p-input-filled': layoutConfig.inputStyle === 'filled' }
   );
+
   const optionsFormik: FormikConfig<TypeLoginData> = {
     initialValues    : initialValuesLoginSchema,
     validationSchema : loginSchema,
@@ -33,7 +38,7 @@ function CardLogin () {
 
   return (
     <div className={containerClassName}>
-      <div className="flex flex-column w-9 sm:w-8 md:w-7 lg:w-auto align-items-center justify-content-center">
+      <div className="card-login__container flex flex-column w-9 sm:w-8 md:w-7 lg:w-6 xl:w-auto align-items-center justify-content-center">
         {/* <img
           src={`/layout/images/logo-${
             layoutConfig.colorScheme === "light" ? "dark" : "white"
@@ -73,6 +78,4 @@ function CardLogin () {
       </div>
     </div>
   );
-}
-
-export default CardLogin;
+};

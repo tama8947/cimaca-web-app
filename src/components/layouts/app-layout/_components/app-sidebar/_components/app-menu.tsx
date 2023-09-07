@@ -1,19 +1,15 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 'use client';
 import Link from 'next/link';
-// import React, { useContext } from 'react';
-// import { LayoutContext } from '../../../contexts/layout-context';
 import { MenuProvider } from '../contexts/menu-context';
-import { appMenuData } from './app-menu-data';
+import { appMenuData } from '../custom-data/app-menu-data';
 import AppMenuItemMap from './app-menu-item';
 
-function AppMenu () {
-  // const { layoutConfig } = useContext(LayoutContext);
+export default function AppMenu () {
   return (
     <MenuProvider>
       <ul className="layout-menu">
         {appMenuData.map((item, i) => {
-          return !item?.seperator
+          return item?.seperator === undefined
             ? (
             <AppMenuItemMap
               item={item}
@@ -43,6 +39,4 @@ function AppMenu () {
       </ul>
     </MenuProvider>
   );
-}
-
-export default AppMenu;
+};

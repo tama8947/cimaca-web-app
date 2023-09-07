@@ -2,7 +2,7 @@
 // import React, { ReactNode } from 'react';
 import {
   type ChildContainerProps
-} from '../../components/layouts/app-layout/types/types';
+} from '../components/layouts/app-layout/types/types';
 import {
   type AppBreadcrumbProps,
   // AppBreadcrumbState,

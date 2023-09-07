@@ -1,9 +1,11 @@
-import { type ChildContainerProps } from '@/components/global-types/types';
-
-export default function Layout ({ children }: ChildContainerProps) {
+export default function ForgotPasswordLayout ({
+  children
+}: {
+  children: React.ReactNode
+}) {
   return (
     <div className="w-full h-screen flex justify-content-center align-items-center">
-        {children}
+      {children}
     </div>
   );
-};
+}
