@@ -1,13 +1,11 @@
-import { type ChildContainerProps } from '@/components/global-types/types';
 import AppLayout from '@/components/layouts/app-layout/app-layout';
 import '@/components/layouts/app-layout/styles/layout.scss';
+import { type ChildContainerProps } from '@/global-types/types';
 
-function Layout ({ children }: ChildContainerProps) {
+export default function DashboardLayout ({ children }: ChildContainerProps) {
   return (
     <AppLayout>
       {children}
     </AppLayout>
   );
-}
-
-export default Layout;
+};

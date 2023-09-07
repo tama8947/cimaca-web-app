@@ -11,7 +11,7 @@ export function TitleCard () {
   return (
     <div className="text-center mb-5">
       <Image
-        src="/demo/images/login/avatar.png"
+        src="/icons/next.svg"
         alt="Image"
         height="50"
         width="50"

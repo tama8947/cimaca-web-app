@@ -6,7 +6,6 @@ import React, { useContext, useEffect, useRef } from 'react';
 import {
   type AppTopbarRef,
   type ChildContainerProps
-  // type Page
 } from '@/components/layouts/app-layout/types/types';
 import AppSidebar from './_components/app-sidebar/app-sidebar';
 import AppTopBar from './_components/app-topbar/app-topbar';
@@ -18,21 +17,20 @@ import {
 import { blockBodyScroll } from './functions/layout-actions';
 import { containerClass } from './functions/layout-css-dynamic-class';
 
-// type Props = ChildContainerProps & {
-//   Component: Page
-// }
-
-function Layout ({ children }: ChildContainerProps) {
+export default function Layout ({ children }: ChildContainerProps) {
   const { layoutConfig, layoutState, setLayoutState } =
     useContext(LayoutContext);
   const topbarRef = useRef<AppTopbarRef>(null);
   const sidebarRef = useRef<HTMLDivElement>(null);
+
   const {
     bindProfileMenuOutsideClickListener,
     unbindProfileMenuOutsideClickListener
   } = useProfileMenuOutsideClickListener(topbarRef, setLayoutState);
+
   const { bindMenuOutsideClickListener, unbindMenuOutsideClickListener } =
     useMenuOutsideClickListener({ topbarRef, sidebarRef }, setLayoutState);
+
   useMountEffect(() => {
     PrimeReact.ripple = true;
   });
@@ -77,5 +75,3 @@ function Layout ({ children }: ChildContainerProps) {
     </>
   );
 }
-
-export default Layout;

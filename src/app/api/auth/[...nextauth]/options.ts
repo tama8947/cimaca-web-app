@@ -25,7 +25,7 @@ export const options: NextAuthOptions = {
           }
         });
         await prisma.$disconnect();
-        if (!user) {
+        if (user === null || user === undefined) {
           throw new Error('No existe el usuario ingresado.');
         }
         const isCorrectPassword = await bcrypt.compare(
@@ -36,12 +36,7 @@ export const options: NextAuthOptions = {
         if (!isCorrectPassword) {
           throw new Error('Contraseña Incorrecta.');
         }
-
-        if (user && isCorrectPassword) {
-          return user as User;
-        } else {
-          throw new Error('Error al iniciar sesión');
-        }
+        return user as User;
       }
     })
   ],
@@ -51,11 +46,11 @@ export const options: NextAuthOptions = {
   },
   callbacks: {
     async jwt ({ token, user }) {
-      if (user) token.role = user.role;
+      token.role = user.role;
       return token;
     },
     async session ({ session, token }) {
-      if (session?.user) session.user.role = token.role;
+      session.user.role = token.role;
       return session;
     }
   }

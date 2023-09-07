@@ -1,5 +1,4 @@
-import { type LayoutContextProps } from '@/components/global-types/layout';
-import { type LayoutState } from '../types/types';
+import { type LayoutContextProps, type LayoutState } from '../types/types';
 
 // useEffect(() => {
 //   const url = pathname + searchParams.toString();
@@ -11,6 +10,7 @@ import { type LayoutState } from '../types/types';
 // }, [router]);
 
 export const unblockBodyScroll = (): void => {
+  /* eslint-disable */
   if (document.body.classList) {
     document.body.classList.remove('blocked-scroll');
   } else {
@@ -22,14 +22,17 @@ export const unblockBodyScroll = (): void => {
       ' '
     );
   }
+  /* eslint-enable  */
 };
 
 export const blockBodyScroll = (): void => {
+  /* eslint-disable */
   if (document.body.classList) {
     document.body.classList.add('blocked-scroll');
   } else {
     document.body.className += ' blocked-scroll';
   }
+  /* eslint-enable  */
 };
 
 interface ParamsHideProfileMenu {

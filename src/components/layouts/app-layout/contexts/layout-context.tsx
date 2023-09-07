@@ -1,8 +1,14 @@
 import React, { createContext, useState } from 'react';
-import { type ChildContainerProps, type LayoutConfig, type LayoutContextProps, type LayoutState } from '../types/types';
+import {
+  type ChildContainerProps,
+  type LayoutConfig,
+  type LayoutContextProps,
+  type LayoutState
+} from '../types/types';
 
-// eslint-disable-next-line @typescript-eslint/consistent-type-assertions
+/* eslint-disable */
 export const LayoutContext = createContext({} as LayoutContextProps);
+/* eslint-enable */
 
 export function LayoutProvider ({ children }: ChildContainerProps) {
   const [layoutConfig, setLayoutConfig] = useState<LayoutConfig>({
@@ -32,7 +38,6 @@ export function LayoutProvider ({ children }: ChildContainerProps) {
   };
 
   const onMenuToggle = () => {
-    console.log('click');
     if (isOverlay()) {
       setLayoutState((prevLayoutState) => ({
         ...prevLayoutState,

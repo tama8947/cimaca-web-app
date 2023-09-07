@@ -1,3 +1,3 @@
-export default function Login () {
+export default function ForgotPasswordPage () {
   return <div className="w-full"></div>;
 }

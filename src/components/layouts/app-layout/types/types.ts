@@ -2,12 +2,12 @@ import { type NextPage } from 'next';
 import { type Dispatch, type HTMLAttributeAnchorTarget, type MutableRefObject, type ReactElement, type ReactNode, type SetStateAction } from 'react';
 
 /* Next & Layout Types */
-export type Page<P = {}> = NextPage<P> & {
+export type Page<P = object> = NextPage<P> & {
   getLayout?: (page: ReactElement) => ReactNode
-}
+};
 
 /* AppTopbar Types */
-export type NodeRef = MutableRefObject<ReactNode>
+export type NodeRef = MutableRefObject<ReactNode>;
 export interface AppTopbarRef {
   menubutton?: HTMLButtonElement | null
   topbarmenu?: HTMLDivElement | null
@@ -72,11 +72,15 @@ export interface AppMenuItem extends MenuModel {
   replaceUrl?: boolean
   command?: ({ originalEvent, item }: CommandProps) => void
 }
-
 export interface AppMenuItemProps {
   item?: AppMenuItem
   parentKey?: string
   index?: number
   root?: boolean
   className?: string
+}
+
+export interface MenuContextProps {
+  activeMenu: string
+  setActiveMenu: Dispatch<SetStateAction<string>>
 }

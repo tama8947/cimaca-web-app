@@ -1,38 +1,37 @@
 'use client';
 import Link from 'next/link';
 import {
-  // useParams,
   usePathname
-  // useRouter,
-  // useSearchParams
 } from 'next/navigation';
 import { Ripple } from 'primereact/ripple';
 import { classNames } from 'primereact/utils';
-// import React, { useContext, useEffect, useRef } from 'react';
 import React, { useContext } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import { type AppMenuItemProps } from '../../../types/types';
 import { MenuContext } from '../contexts/menu-context';
 
-function AppMenuItemMap (props: AppMenuItemProps) {
+export default function AppMenuItemMap (props: AppMenuItemProps) {
   const { activeMenu, setActiveMenu } = useContext(MenuContext);
-  // const router = useRouter();
+
   const pathname = usePathname();
-  // const searchParams = useSearchParams();
+
   const item = props.item;
-  const key = props.parentKey
+
+  const key = props.parentKey !== undefined
     ? props.parentKey + '-' + props.index
     : String(props.index);
-  const isActiveRoute = item?.to && pathname === item.to;
+
+  const isActiveRoute = item?.to !== undefined && pathname === item?.to;
+
   const active = activeMenu === key || activeMenu.startsWith(key + '-');
 
   // useEffect(() => {
-  //   if (item?.to && pathname === item?.to) {
+  //   if (item!.to && pathname === item!.to) {
   //     setActiveMenu(key);
   //   }
 
   //   const onRouteChange = (url: string) => {
-  //     if (item?.to && item?.to === url) {
+  //     if (item!.to && item!.to === url) {
   //       setActiveMenu(key);
   //     }
   //   };
@@ -53,30 +52,30 @@ function AppMenuItemMap (props: AppMenuItemProps) {
     event: React.MouseEvent<HTMLAnchorElement, MouseEvent>
   ) => {
     // avoid processing disabled items
-    if (item?.disabled) {
+    if (item?.disabled ?? false) {
       event.preventDefault();
       return;
     }
 
     // execute command
-    if (item?.command) {
+    if (item?.command !== undefined) {
       item?.command({ originalEvent: event, item });
     }
 
     // toggle active state
-    if (item?.items) setActiveMenu(active ? (props.parentKey as string) : key);
+    if (item?.items !== undefined) setActiveMenu(active ? (props.parentKey as string) : key);
     else setActiveMenu(key);
   };
 
-  const subMenu = item?.items && item?.visible !== false && (
+  const subMenu = item?.items !== undefined && item?.visible !== false && (
     <CSSTransition
       timeout={{ enter: 1000, exit: 450 }}
       classNames="layout-submenu"
-      in={props.root ? true : active}
-      key={item?.label}
+      in={props.root !== undefined ? true : active}
+      key={item.label}
     >
       <ul>
-        {item?.items.map((child, i) => {
+        {item.items.map((child, i) => {
           return (
             <AppMenuItemMap
               item={child}
@@ -98,10 +97,10 @@ function AppMenuItemMap (props: AppMenuItemProps) {
         'active-menuitem'      : active
       })}
     >
-      {props.root && item?.visible !== false && (
+      {props.root !== undefined && item?.visible !== false && (
         <div className="layout-menuitem-root-text">{item?.label}</div>
       )}
-      {(!item?.to || item?.items) && item?.visible !== false
+      {(item?.to === undefined || item?.items !== undefined) && item?.visible !== false
         ? (
         <a
           href={item?.url}
@@ -112,7 +111,7 @@ function AppMenuItemMap (props: AppMenuItemProps) {
         >
           <i className={classNames('layout-menuitem-icon', item?.icon)}></i>
           <span className="layout-menuitem-text">{item?.label}</span>
-          {item?.items && (
+          {item?.items !== undefined && (
             <i className="pi pi-fw pi-angle-down layout-submenu-toggler"></i>
           )}
           <Ripple />
@@ -120,7 +119,7 @@ function AppMenuItemMap (props: AppMenuItemProps) {
           )
         : null}
 
-      {item?.to && !item?.items && item?.visible !== false
+      {item?.to !== undefined && item?.items === undefined && item?.visible !== false
         ? (
         <Link
           href={item?.to}
@@ -134,7 +133,7 @@ function AppMenuItemMap (props: AppMenuItemProps) {
         >
           <i className={classNames('layout-menuitem-icon', item?.icon)}></i>
           <span className="layout-menuitem-text">{item?.label}</span>
-          {item?.items && (
+          {item?.items !== undefined && (
             <i className="pi pi-fw pi-angle-down layout-submenu-toggler"></i>
           )}
           <Ripple />
@@ -146,5 +145,3 @@ function AppMenuItemMap (props: AppMenuItemProps) {
     </li>
   );
 }
-
-export default AppMenuItemMap;

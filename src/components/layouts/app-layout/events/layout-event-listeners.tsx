@@ -14,13 +14,14 @@ export const useProfileMenuOutsideClickListener = (
     type     : 'click',
     listener : (event) => {
       console.log('click');
+      /* eslint-disable  */
       const isOutsideClicked = !(
         topbarRef.current?.topbarmenu?.isSameNode(event.target as Node) ||
         topbarRef.current?.topbarmenu?.contains(event.target as Node) ||
         topbarRef.current?.topbarmenubutton?.isSameNode(event.target as Node) ||
         topbarRef.current?.topbarmenubutton?.contains(event.target as Node)
       );
-
+      /* eslint-enable */
       if (isOutsideClicked) {
         hideProfileMenu({
           setLayoutState,
@@ -53,13 +54,14 @@ export const useMenuOutsideClickListener = (
     useEventListener({
       type     : 'click',
       listener : (event) => {
+        /* eslint-disable  */
         const isOutsideClicked = !(
           sidebarRef.current?.isSameNode(event.target as Node) ||
           sidebarRef.current?.contains(event.target as Node) ||
           topbarRef.current?.menubutton?.isSameNode(event.target as Node) ||
           topbarRef.current?.menubutton?.contains(event.target as Node)
         );
-
+          /* eslint-enable  */
         if (isOutsideClicked) {
           hideMenu({ setLayoutState, unbindMenuOutsideClickListener });
         }
