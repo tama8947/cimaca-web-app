@@ -28,12 +28,17 @@ const excludedRoutes = (pathName: string) =>
 
 export async function middleware (request: NextRequest) {
   const session = await thereIsSession(request);
+
   const pathName = request.nextUrl.pathname;
+
   if (pathName === '/') {
     return NextResponse.redirect(new URL('/auth/login', request.url));
   }
+
   if (pathName.includes('/auth/login')) return loginRedirect(request, session);
+
   if (excludedRoutes(pathName)) return logoutRedirect(request, session);
+
   return NextResponse.next();
 }
 

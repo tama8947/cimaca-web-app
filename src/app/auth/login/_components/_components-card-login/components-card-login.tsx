@@ -4,8 +4,8 @@ import { Password } from 'primereact/password';
 import { useEffect } from 'react';
 import ErrorMsg from '@/components/atoms/error-msg';
 import { type FormikInstanceLogin } from '../../types/login-types';
-import { focusOnError } from '../functions/custom-behaviour';
-import './styles/card-components.scss';
+import { focusOnError } from '../functions-card-login/card-login-behaviour';
+import './components-card-login.scss';
 
 export function TitleCard () {
   return (

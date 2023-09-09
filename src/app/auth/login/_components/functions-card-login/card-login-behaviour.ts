@@ -1,4 +1,7 @@
 import { type FormikTouched } from 'formik';
+import { redirect } from 'next/navigation';
+import { useSession } from 'next-auth/react';
+import { useEffect } from 'react';
 import { type FormikInstanceLogin, type TypeLoginData } from '../../types/login-types';
 
 type NameInput = keyof FormikTouched<TypeLoginData>;
@@ -29,4 +32,13 @@ export const focusOnError = (params: ParamsFocusErrorFunction) => {
       document.querySelector<HTMLInputElement>('#password')?.focus(), 100
     );
   }
+};
+
+export const useCustomRedirectCardLogin = () => {
+  const { status } = useSession();
+  useEffect(() => {
+    if (status === 'authenticated') {
+      redirect('/dashboard');
+    }
+  }, [status]);
 };

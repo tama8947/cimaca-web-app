@@ -12,8 +12,9 @@ import {
   CardInputs,
   TitleCard
 } from './_components-card-login/components-card-login';
-import { submitAction } from './functions/cardlogin-actions';
-import './styles/card-login.scss';
+import './card-login.scss';
+import { submitAction } from './functions-card-login/card-login-actions';
+import { useCustomRedirectCardLogin } from './functions-card-login/card-login-behaviour';
 
 export default function CardLogin () {
   const [loading, setLoading] = useState(false);
@@ -33,6 +34,8 @@ export default function CardLogin () {
     validationSchema : loginSchema,
     onSubmit         : async (data) => { submitAction({ setLoading, data, router, toast }); }
   };
+
+  useCustomRedirectCardLogin();
 
   const formik = useFormik(optionsFormik);
 

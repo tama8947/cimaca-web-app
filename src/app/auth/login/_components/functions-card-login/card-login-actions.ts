@@ -7,7 +7,7 @@ import {
   type SetStateAction
 } from 'react';
 import { type TypeLoginData } from '../../types/login-types';
-import { focusOnError } from './custom-behaviour';
+import { focusOnError } from './card-login-behaviour';
 
 interface SubmitActionFunction {
   setLoading: Dispatch<SetStateAction<boolean>>
@@ -23,7 +23,7 @@ export const submitAction = ({
   toast
 }: SubmitActionFunction) => {
   setLoading(true);
-  signIn('credentials', { ...data /* redirect: false */ })
+  signIn('credentials', { ...data, redirect: false })
     .then((res) => {
       if (res?.error !== undefined && res.error !== null) {
         toast?.current?.show?.({
