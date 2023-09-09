@@ -26,8 +26,10 @@ export default function RootLayout ({
       <SessionProvider>
         <LayoutProvider>
           <NotificationContext.Provider value={toastRef}>
-            <Toast ref={toastRef} />
-            <body className={inter.className}>{children}</body>
+            <body className={inter.className}>
+              <Toast ref={toastRef} />
+              {children}
+            </body>
           </NotificationContext.Provider>
         </LayoutProvider>
       </SessionProvider>
