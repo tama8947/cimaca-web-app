@@ -41,7 +41,7 @@ export default function CardLogin () {
 
   return (
     <div className={containerClassName}>
-      <div className="card-login__container flex flex-column w-9 sm:w-8 md:w-7 lg:w-6 xl:w-auto align-items-center justify-content-center">
+      <div className="card-login__container flex flex-column w-full mx-3 sm:w-8 md:w-7 lg:w-6 xl:w-auto align-items-center justify-content-center">
         {/* <img
           src={`/layout/images/logo-${
             layoutConfig.colorScheme === "light" ? "dark" : "white"

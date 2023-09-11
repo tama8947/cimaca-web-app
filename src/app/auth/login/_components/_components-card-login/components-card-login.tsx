@@ -11,14 +11,14 @@ export function TitleCard () {
   return (
     <div className="text-center mb-5">
       <Image
-        src="/icons/next.svg"
-        alt="Image"
-        height="50"
-        width="50"
+        src="/icons/Logo-Web-D-La-Macarena.png"
+        alt="Logo D´La Macarena"
+        height="70"
+        width="175"
         className="mb-3"
       />
-      <div className="text-900 text-3xl font-medium mb-3">Iniciar Sesión</div>
-      <span className="text-600 font-medium">Inicia sesión para continuar</span>
+      <div className="text-900 text-2xl font-medium mb-3">Iniciar Sesión</div>
+      <span className="text-600 text-sm font-medium">Inicia sesión para continuar</span>
     </div>
   );
 }
@@ -79,7 +79,7 @@ export function CardInputs ({ formikInstance, loading }: CardInputProps) {
           <label htmlFor="rememberme1">Remember me</label>
         </div> */}
         <a
-          className="font-medium no-underline ml-0 text-right cursor-pointer"
+          className="font-medium text-sm no-underline mt-2 ml-0 text-right cursor-pointer"
           style={{ color: 'var(--primary-color)' }}
           href="/auth/login/forgot-password"
         >
