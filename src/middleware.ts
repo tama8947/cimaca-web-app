@@ -9,6 +9,8 @@ const loginRedirect = (request: NextRequest, session: JWT | null) => {
 };
 
 const logoutRedirect = (request: NextRequest, session: JWT | null) => {
+  if (request.nextUrl.pathname.includes('icons')) return NextResponse.next();
+
   if (session?.name === undefined) {
     return NextResponse.redirect(new URL('/auth/login', request.url));
   } else NextResponse.next();

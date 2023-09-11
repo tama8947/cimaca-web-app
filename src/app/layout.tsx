@@ -23,6 +23,9 @@ export default function RootLayout ({
   const toastRef = useRef<Toast>(null);
   return (
     <html lang="en">
+      <head>
+        <link rel='icon' href='/favicon.png'/>
+      </head>
       <SessionProvider>
         <LayoutProvider>
           <NotificationContext.Provider value={toastRef}>

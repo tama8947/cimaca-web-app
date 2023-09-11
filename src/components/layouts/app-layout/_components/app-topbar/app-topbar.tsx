@@ -1,4 +1,5 @@
 'use client';
+import Image from 'next/image';
 import Link from 'next/link';
 import { Menu } from 'primereact/menu';
 import { classNames } from 'primereact/utils';
@@ -31,15 +32,14 @@ const AppTopBar = forwardRef<AppTopbarRef>((props, ref) => {
   return (
     <div className="layout-topbar">
       <Link href="/" className="layout-topbar-logo">
-        {/* <Image
-          src={`/layout/images/logo-${
-            layoutConfig?.colorScheme !== "light" ? "white" : "dark"
-          }.svg`}
-          width="47.22"
-          height={"35"}
+        <Image
+          src={'/icons/Logo-Web-D-La-Macarena.png'}
+          style={{ height: '50px' }}
+          width="125"
+          height={'50'}
           alt="logo"
-        /> */}
-        <span>SAKAI</span>
+        />
+        {/* <span>SAKAI</span> */}
       </Link>
 
       <button
