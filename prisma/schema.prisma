@@ -15,14 +15,14 @@ model User {
   name               String?
   last_name          String
   email              String?   @unique
-  emailVerified      DateTime?
+  email_verified      DateTime?
   password           String
   image              String?
   state              State
   verification_token String?
   role               String?   @default("default")
-  createdAt          DateTime  @default(now())
-  updatedAt          DateTime  @updatedAt
+  created_at          DateTime  @default(now())
+  updated_at          DateTime  @updatedAt  @default(now())
 }
 
 enum State {
