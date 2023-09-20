@@ -1,22 +1,15 @@
-import Image from 'next/image';
 import { InputText } from 'primereact/inputtext';
 import { Password } from 'primereact/password';
 import { useEffect } from 'react';
-import ErrorMsg from '@/components/atoms/error-msg';
-import { type FormikInstanceLogin } from '../../types/login-types';
-import { focusOnError } from '../functions-card-login/card-login-behaviour';
-import './components-card-login.scss';
+import ErrorMsg from '@/components/atoms/error-msg/error-msg';
+import Logo from '@/components/atoms/logo/logo';
+import { type FormikInstance } from '../../types/login-types';
+import { focusOnError } from '../functions-content-login/content-content-behaviour';
 
-export function TitleCard () {
+export function ContentHead () {
   return (
     <div className="text-center mb-5">
-      <Image
-        src="/icons/Logo-Web-D-La-Macarena.png"
-        alt="Logo D´La Macarena"
-        height="70"
-        width="175"
-        className="mb-3"
-      />
+      <Logo/>
       <div className="text-900 text-2xl font-medium mb-3">Iniciar Sesión</div>
       <span className="text-600 text-sm font-medium">Inicia sesión para continuar</span>
     </div>
@@ -25,16 +18,16 @@ export function TitleCard () {
 
 interface CardInputProps {
   loading: boolean
-  formikInstance: FormikInstanceLogin
+  formikInstance: FormikInstance
 }
 
-export function CardInputs ({ formikInstance, loading }: CardInputProps) {
+export function ContentInputs ({ formikInstance, loading }: CardInputProps) {
   useEffect(() => { focusOnError({ formikInstance }); }, [formikInstance]);
   return (
     <>
       <div className="flex flex-column ">
         <label htmlFor="email" className="block text-900 text-md font-medium ">
-          Email
+          Correo Electrónico
         </label>
         <InputText
           id="email"
@@ -44,7 +37,7 @@ export function CardInputs ({ formikInstance, loading }: CardInputProps) {
           disabled={loading}
           onChange={ formikInstance?.handleChange}
           value={formikInstance?.values?.email}
-          placeholder="Email address"
+          placeholder="Correo Electrónico"
           className="inputfocus p-inputtext-sm w-full  mt-2"
         />
         <ErrorMsg msg={formikInstance?.errors?.email} />
@@ -53,7 +46,7 @@ export function CardInputs ({ formikInstance, loading }: CardInputProps) {
         htmlFor="password"
         className="block text-900 font-medium text-md mt-5"
       >
-        Password
+        Contraseña
       </label>
       <Password
         name="password"
@@ -61,10 +54,10 @@ export function CardInputs ({ formikInstance, loading }: CardInputProps) {
         disabled={loading}
         onChange={ formikInstance?.handleChange}
         value={formikInstance?.values?.password}
-        placeholder="Password"
+        placeholder="Contraseña"
         feedback={false}
-        // toggleMask
-        className="w-full custom-input-password flex align-items-center mt-2 p-inputtext-sm "
+        toggleMask
+        className="w-full  flex align-items-center mt-2 p-inputtext-sm "
         inputClassName="inputfocus w-full  md:w-30rem"
       ></Password>
       <ErrorMsg msg={formikInstance?.errors?.password} />
@@ -81,7 +74,7 @@ export function CardInputs ({ formikInstance, loading }: CardInputProps) {
         <a
           className="font-medium text-sm no-underline mt-2 ml-0 text-right cursor-pointer"
           style={{ color: 'var(--primary-color)' }}
-          href="/auth/login/forgot-password"
+          href="/auth/forgot-password"
         >
           ¿Has olvidado tu contraseña?
         </a>

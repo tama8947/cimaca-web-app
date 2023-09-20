@@ -1,10 +1,12 @@
+import './layout.scss';
+
 export default function ForgotPasswordLayout ({
   children
 }: {
   children: React.ReactNode
 }) {
   return (
-    <div className="w-full h-screen flex justify-content-center align-items-center">
+    <div className="forgot-password-layout overflow-x-hidden w-full h-screen flex justify-content-center align-items-center">
       {children}
     </div>
   );

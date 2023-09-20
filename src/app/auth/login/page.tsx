@@ -1,6 +1,6 @@
 import { type Metadata } from 'next';
 import Favicon from '@/app/favicon.png';
-import CardLogin from './_components/card-login';
+import ContentLogin from './_components/content-login';
 
 export const metadata: Metadata = {
   title : 'Iniciar Sesión',
@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 export default function LoginPage () {
   return (
     <main className="w-full">
-      <CardLogin />
+      <ContentLogin />
     </main>
   );
 }
