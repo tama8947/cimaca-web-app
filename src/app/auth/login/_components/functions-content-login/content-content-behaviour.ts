@@ -2,14 +2,11 @@ import { type FormikTouched } from 'formik';
 import { redirect } from 'next/navigation';
 import { useSession } from 'next-auth/react';
 import { useEffect } from 'react';
-import { type FormikInstanceLogin, type TypeLoginData } from '../../types/login-types';
+import { type FormikInstance, type ModuleFormData } from '../../types/login-types';
 
-type NameInput = keyof FormikTouched<TypeLoginData>;
-interface ParamsFocusErrorFunction {
-  formikInstance?: FormikInstanceLogin
-  messageError?: string
-}
-export const focusOnError = (params: ParamsFocusErrorFunction) => {
+type NameInput = keyof FormikTouched<ModuleFormData>;
+
+export const focusOnError = (params: ParamsFocusErrorFunction<FormikInstance>) => {
   const { formikInstance, messageError } = params;
   if (formikInstance?.isSubmitting ?? false) {
     const inputs = document.querySelectorAll<HTMLInputElement>('.inputfocus');
