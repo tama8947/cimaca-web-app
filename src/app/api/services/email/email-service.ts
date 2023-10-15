@@ -12,8 +12,8 @@ export default class EmailService {
   private readonly transporter: Transporter<SMTPTransport.SentMessageInfo>;
   private readonly awsCredentials: boolean;
   constructor (params?: ParametersEmailService) {
-    this.awsCredentials =
-      params !== undefined ? params?.awsCredentials ?? false : false;
+    this.awsCredentials = params?.awsCredentials ?? true;
+
     if (this.awsCredentials) {
       const ses = new aws.SES({
         credentialDefaultProvider: defaultProvider, region: process.env.AWS_REGION
