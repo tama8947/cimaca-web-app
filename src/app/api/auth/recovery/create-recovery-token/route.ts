@@ -59,7 +59,7 @@ export async function POST (request: Request) {
   const userData = await getUser(email);
 
   if (userData !== null && userData !== undefined) {
-    const emailService = new EmailService({ awsCredentials: false });
+    const emailService = new EmailService({ awsCredentials: true });
     const templateEmail = getTemplateEmail(
       `${userData.name} ${userData.last_name}`,
       recoverUrl
@@ -83,10 +83,7 @@ export async function POST (request: Request) {
     } catch (err) {
       const error: ErrorNodemailerRequest = err as ErrorNodemailerRequest;
 
-      const errorMsg =
-        error?.Error !== undefined
-          ? error.Error.Message
-          : error.response ?? error.message;
+      const errorMsg = error?.Error?.Message ?? error.response ?? error.message;
 
       return new Response(
         `Ha ocurrido un error al enviar el correo. ${errorMsg}`,
