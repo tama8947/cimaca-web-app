@@ -21,7 +21,7 @@ export const options: NextAuthOptions = {
           throw new Error('Error al conectar a la base de datos');
         }
 
-        const user = await prisma.user.findFirst({
+        const user = await prisma.users.findFirst({
           where: {
             email: credentials?.email
           }

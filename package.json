@@ -10,10 +10,11 @@
     "build": "npx prisma migrate deploy && npx prisma generate && npx prisma db seed && next build",
     "start": "next start",
     "lint": "next lint",
-    "lint:fix": "next lint --fix"
+    "lint:fix": "next lint --fix",
+    "db:migrate": "npx prisma migrate dev"
   },
   "dependencies": {
-    "@prisma/client": "^5.2.0",
+    "@prisma/client": "^5.4.2",
     "@types/bcrypt": "^5.0.0",
     "@types/jsonwebtoken": "^9.0.2",
     "@types/node": "20.5.7",
@@ -47,6 +48,7 @@
     "eslint-plugin-n": "^16.0.2",
     "eslint-plugin-promise": "^6.1.1",
     "eslint-plugin-react": "^7.33.2",
+    "prisma": "^5.4.2",
     "typescript": "^5.2.2"
   }
 }

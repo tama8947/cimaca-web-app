@@ -10,19 +10,69 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model User {
-  id                 String    @id @default(cuid())
+model Users {
+  id                 String            @id @default(cuid())
   name               String?
   last_name          String
-  email              String?   @unique
-  email_verified      DateTime?
+  email              String?           @unique
+  email_verified     DateTime?
   password           String
   image              String?
   state              State
   verification_token String?
-  role               String?   @default("default")
-  created_at          DateTime  @default(now())
-  updated_at          DateTime  @updatedAt  @default(now())
+  role               String?           @default("default")
+  created_at         DateTime          @default(now())
+  updated_at         DateTime          @default(now()) @updatedAt
+  DailyIncomeCuts    DailyIncomeCuts[]
+
+  DailyMovement DailyMovementNovelties[]
+
+  @@map("tbl_users")
+}
+
+model DailyIncomeCuts {
+  id          String   @id @default(cuid())
+  userId      String
+  amount      Float
+  category_id String
+  comment     String?
+  created_at  DateTime @default(now())
+  updated_at  DateTime @default(now()) @updatedAt
+
+  user     Users       @relation(fields: [userId], references: [id])
+  category References @relation(fields: [category_id], references: [id])
+
+  @@map("tbl_daily_income_cuts")
+}
+
+model DailyMovementNovelties {
+  id         String   @id @default(cuid())
+  userId     String
+  amount     Float
+  comment    String?
+  categoryId String
+  created_at DateTime @default(now())
+  updated_at DateTime @default(now()) @updatedAt
+
+  category References @relation(fields: [categoryId], references: [id])
+  user     Users       @relation(fields: [userId], references: [id])
+
+  @@map("tbl_daily_movement_novelties")
+}
+
+model References {
+  id              String                   @id @default(cuid())
+  createdAt       DateTime                 @default(now())
+  updatedAt       DateTime                 @updatedAt
+  estado          String
+  dominio         String
+  rango_valor     String
+  descripcion     String?
+  opcional        String?
+  DailyMovement   DailyMovementNovelties[]
+  DailyIncomeCuts DailyIncomeCuts[]
+
+  @@map("tbl_references")
 }
 
 enum State {
