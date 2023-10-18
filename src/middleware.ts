@@ -39,9 +39,10 @@ const thereIsSession = async (request: NextRequest) => {
   return session;
 };
 
-const excludedRoutes = (pathName: string) =>
-  !pathName.includes('/auth/login') &&
-  !pathName.includes('create_recovery_token');
+const isAuthRoute = (pathName: string) =>
+  pathName.includes('/auth/login') ||
+  pathName.includes('/auth/forgot-password') ||
+  pathName.includes('/auth/reset-password');
 
 export async function middleware (request: NextRequest) {
   const session = await thereIsSession(request);
@@ -56,9 +57,9 @@ export async function middleware (request: NextRequest) {
     return NextResponse.redirect(new URL('/auth/login', request.url));
   }
 
-  if (pathName.includes('/auth/login')) return loginRedirect(request, session);
+  if (isAuthRoute(pathName)) return loginRedirect(request, session);
 
-  if (excludedRoutes(pathName)) return logoutRedirect(request, session);
+  if (!isAuthRoute(pathName)) return logoutRedirect(request, session);
 
   // return NextResponse.next();
   // Redirect if there is no locale

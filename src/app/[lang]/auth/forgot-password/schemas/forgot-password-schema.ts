@@ -1,5 +1,5 @@
 import { object, string } from 'yup';
-import { type ModuleFormData } from '../types/login-types';
+import { type ModuleFormData } from '../types/forgot-password.types';
 
 const emailInvalidmessage =
   'El formato de email debe ser válido, ejemplo: micorreo@dominio.com';
@@ -7,8 +7,7 @@ const emailInvalidmessage =
 const fieldsValidations = {
   email: string()
     .email(emailInvalidmessage)
-    .required('Este campo es requerido'),
-  password: string().required('Este campo es requerido')
+    .required('Este campo es requerido')
 };
 
 export const moduleSchema = object().shape(fieldsValidations);

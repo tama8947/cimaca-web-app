@@ -1,5 +1,5 @@
 import { type Metadata } from 'next';
-import CardLogin from './_components/card-login';
+import ContentLogin from './_components/content-login';
 import Favicon from '@/app/favicon.png';
 
 export const metadata: Metadata = {
@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 export default function LoginPage () {
   return (
     <main className="w-full">
-      <CardLogin />
+      <ContentLogin />
     </main>
   );
 }

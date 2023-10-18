@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="only">
+    <title>Recuperación de contraseña</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        margin: 0;
+        padding: 0;
+      }
+      .container {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 30px;
+        border-radius: 30px;
+        background-color: #fff;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+      h1 {
+        text-align: center;
+        color: #6366f1;
+      }
+      p {
+        font-size: 16px;
+        line-height: 1.5;
+      }
+      /* Estilos específicos para el tema púrpura */
+      .purple-background {
+        /* background-color: #800080; */
+        color: #fff;
+        padding: 3px 0px;
+      }
+      /* Estilos para el botón */
+      .button {
+        display: inline-block;
+        background-color: #6366f1;
+        text-decoration: none;
+        color: #fff !important;
+        padding: 10px 20px;
+        text-decoration: none;
+        border-radius: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="container">
+      <div class="purple-background">
+        <h1>Recuperación de Contraseña D 'La Macarena App</h1>
+      </div>
+      <p>¡Hola $[name]!</p>
+      <p>
+        Hemos recibido una solicitud para restablecer tu contraseña. Si no
+        hiciste esta solicitud, puedes ignorar este correo electrónico.
+      </p>
+      <p>Para restablecer tu contraseña, haz clic en el siguiente botón:</p>
+      <p>
+        <a class="button" href="$[urlPasswordReset]">Restablecer Contraseña</a>
+      </p>
+      <p>
+        Si el botón de arriba no funciona, puedes copiar y pegar la siguiente
+        URL en tu navegador web:
+        <br />
+        $[urlPasswordReset]
+      </p>
+      <p>Este enlace expirará en 2 minutos por motivos de seguridad.</p>
+      <p>
+        Gracias,<br />
+        D 'La Macarena App
+      </p>
+    </main>
+  </body>
+</html>
