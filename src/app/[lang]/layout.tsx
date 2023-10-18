@@ -8,21 +8,29 @@ import 'primereact/resources/primereact.min.css';
 import 'primereact/resources/themes/lara-light-indigo/theme.css';
 import { Toast } from 'primereact/toast';
 import { useRef } from 'react';
+import './globals.css';
 import { NotificationContext } from '@/components/layouts/app-layout/contexts/custom-context';
 import { LayoutProvider } from '@/components/layouts/app-layout/contexts/layout-context';
 import '@/components/layouts/app-layout/styles/layout.scss';
-import './globals.css';
+import { i18n, type Locale } from '@/i18n.config';
 
 const inter = Inter({ subsets: ['latin'] });
 
+export async function generateStaticParams () {
+  return i18n.locales.map((locale: any) => ({ lang: locale }));
+}
+
 export default function RootLayout ({
-  children
+  children,
+  params
 }: {
   children: React.ReactNode
+  params: { lang: Locale }
+
 }) {
   const toastRef = useRef<Toast>(null);
   return (
-    <html lang="en">
+    <html lang={params.lang}>
       <head>
         <link rel='icon' href='/favicon.png'/>
       </head>

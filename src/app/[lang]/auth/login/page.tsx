@@ -1,6 +1,6 @@
 import { type Metadata } from 'next';
-import Favicon from '@/app/favicon.png';
 import CardLogin from './_components/card-login';
+import Favicon from '@/app/favicon.png';
 
 export const metadata: Metadata = {
   title : 'Iniciar Sesión',

@@ -11,66 +11,66 @@ datasource db {
 }
 
 model Users {
-  id                 String            @id @default(cuid())
+  id                 String    @id @default(cuid())
   name               String?
   last_name          String
-  email              String?           @unique
+  email              String?   @unique
   email_verified     DateTime?
   password           String
   image              String?
   state              State
   verification_token String?
-  role               String?           @default("default")
-  created_at         DateTime          @default(now())
-  updated_at         DateTime          @default(now()) @updatedAt
-  DailyIncomeCuts    DailyIncomeCuts[]
+  role               String?   @default("default")
+  created_at         DateTime  @default(now())
+  updated_at         DateTime  @default(now()) @updatedAt
 
-  DailyMovement DailyMovementNovelties[]
+  daily_incomecuts DailyIncomeCuts[]
+  daily_movement   DailyMovementNovelties[]
 
   @@map("tbl_users")
 }
 
 model DailyIncomeCuts {
   id          String   @id @default(cuid())
-  userId      String
+  user_id     String
   amount      Float
   category_id String
   comment     String?
   created_at  DateTime @default(now())
   updated_at  DateTime @default(now()) @updatedAt
 
-  user     Users       @relation(fields: [userId], references: [id])
+  user     Users      @relation(fields: [user_id], references: [id])
   category References @relation(fields: [category_id], references: [id])
 
   @@map("tbl_daily_income_cuts")
 }
 
 model DailyMovementNovelties {
-  id         String   @id @default(cuid())
-  userId     String
-  amount     Float
-  comment    String?
-  categoryId String
-  created_at DateTime @default(now())
-  updated_at DateTime @default(now()) @updatedAt
+  id          String   @id @default(cuid())
+  user_id     String
+  amount      Float
+  comment     String?
+  category_id String
+  created_at  DateTime @default(now())
+  updated_at  DateTime @default(now()) @updatedAt
 
-  category References @relation(fields: [categoryId], references: [id])
-  user     Users       @relation(fields: [userId], references: [id])
+  category References @relation(fields: [category_id], references: [id])
+  user     Users      @relation(fields: [user_id], references: [id])
 
   @@map("tbl_daily_movement_novelties")
 }
 
 model References {
-  id              String                   @id @default(cuid())
-  createdAt       DateTime                 @default(now())
-  updatedAt       DateTime                 @updatedAt
-  estado          String
-  dominio         String
-  rango_valor     String
-  descripcion     String?
-  opcional        String?
-  DailyMovement   DailyMovementNovelties[]
-  DailyIncomeCuts DailyIncomeCuts[]
+  id                String                   @id @default(cuid())
+  created_at        DateTime                 @default(now())
+  updated_at        DateTime                 @default(now()) @updatedAt
+  state             String
+  domain            String
+  range_value       String
+  description       String?
+  optional          String?
+  daily_movement    DailyMovementNovelties[]
+  daily_income_cuts DailyIncomeCuts[]
 
   @@map("tbl_references")
 }

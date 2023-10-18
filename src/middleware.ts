@@ -1,6 +1,21 @@
+import { match as matchLocale } from '@formatjs/intl-localematcher';
+import Negotiator from 'negotiator';
 import { NextResponse } from 'next/server';
 import { getToken, type JWT } from 'next-auth/jwt';
 import type { NextRequest } from 'next/server';
+import { i18n } from '@/i18n.config';
+
+function getLocale (request: NextRequest): string | undefined {
+  const negotiatorHeaders: Record<string, string> = {};
+  request.headers.forEach((value, key) => (negotiatorHeaders[key] = value));
+
+  // @ts-expect-error locales are readonly
+  const locales: string[] = i18n.locales;
+  const languages = new Negotiator({ headers: negotiatorHeaders }).languages();
+
+  const locale = matchLocale(languages, locales, i18n.defaultLocale);
+  return locale;
+}
 
 const loginRedirect = (request: NextRequest, session: JWT | null) => {
   if (session?.name !== undefined) {
@@ -33,6 +48,10 @@ export async function middleware (request: NextRequest) {
 
   const pathName = request.nextUrl.pathname;
 
+  const pathnameIsMissingLocale = i18n.locales.every(
+    locale => !pathName.startsWith(`/${locale}/`) && pathName !== `/${locale}`
+  );
+
   if (pathName === '/') {
     return NextResponse.redirect(new URL('/auth/login', request.url));
   }
@@ -41,7 +60,17 @@ export async function middleware (request: NextRequest) {
 
   if (excludedRoutes(pathName)) return logoutRedirect(request, session);
 
-  return NextResponse.next();
+  // return NextResponse.next();
+  // Redirect if there is no locale
+  if (pathnameIsMissingLocale) {
+    const locale = getLocale(request);
+    return NextResponse.redirect(
+      new URL(
+        `/${locale}${pathName.startsWith('/') ? '' : '/'}${pathName}`,
+        request.url
+      )
+    );
+  }
 }
 
 // See "Matching Paths" below to learn more
