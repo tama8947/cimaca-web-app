@@ -44,6 +44,8 @@ const isAuthRoute = (pathName: string) =>
   pathName.includes('/auth/forgot-password') ||
   pathName.includes('/auth/reset-password');
 
+const notAllowedRoutes = ['/'].concat(i18n.locales.map((lang) => `/${lang}`));
+
 export async function middleware (request: NextRequest) {
   const session = await thereIsSession(request);
 
@@ -53,7 +55,7 @@ export async function middleware (request: NextRequest) {
     locale => !pathName.startsWith(`/${locale}/`) && pathName !== `/${locale}`
   );
 
-  if (pathName === '/') {
+  if (notAllowedRoutes.includes(pathName)) {
     return NextResponse.redirect(new URL('/auth/login', request.url));
   }
 
