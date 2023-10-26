@@ -6,7 +6,7 @@ import recoveryMail from './template-email/recovery-mail.html';
 const prisma = new PrismaClient();
 
 const getUser = async (email: string) => {
-  return await prisma.user.findFirst({
+  return await prisma.users.findFirst({
     where: {
       email
     }
@@ -72,7 +72,7 @@ export async function POST (request: Request) {
         html    : templateEmail
       });
 
-      await prisma.user.update({
+      await prisma.users.update({
         where : { email },
         data  : { verification_token: verificationToken }
       });

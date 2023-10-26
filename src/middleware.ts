@@ -2,8 +2,8 @@ import { match as matchLocale } from '@formatjs/intl-localematcher';
 import Negotiator from 'negotiator';
 import { NextResponse } from 'next/server';
 import { getToken, type JWT } from 'next-auth/jwt';
-import type { NextRequest } from 'next/server';
 import { i18n } from '@/i18n.config';
+import type { NextRequest } from 'next/server';
 
 function getLocale (request: NextRequest): string | undefined {
   const negotiatorHeaders: Record<string, string> = {};
@@ -57,9 +57,9 @@ export async function middleware (request: NextRequest) {
     return NextResponse.redirect(new URL('/auth/login', request.url));
   }
 
-  if (isAuthRoute(pathName)) return loginRedirect(request, session);
+  if (isAuthRoute(pathName) && !pathnameIsMissingLocale) return loginRedirect(request, session);
 
-  if (!isAuthRoute(pathName)) return logoutRedirect(request, session);
+  if (!isAuthRoute(pathName) && !pathnameIsMissingLocale) return logoutRedirect(request, session);
 
   // return NextResponse.next();
   // Redirect if there is no locale
@@ -80,6 +80,6 @@ export const config = {
   matcher: [
     '/',
     '/auth/login',
-    '/((?!api|_next/static|_next/image|favicon.ico).*)'
+    '/((?!api|_next/static|_next/image|icons|favicon.ico).*)'
   ]
 };

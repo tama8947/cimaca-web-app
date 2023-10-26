@@ -53,6 +53,7 @@
         "react/tsx-props-no-spreading": ["off"],
         "semi": ["error", "always"],
         "sort-imports": ["error", { "ignoreCase": true, "ignoreDeclarationSort": true }],
-        "tsx-a11y/anchor-is-valid": ["off"]
+        "tsx-a11y/anchor-is-valid": ["off"],
+        "no-console":["error", {"allow":["warn", "error","info"]}]
     }
 }

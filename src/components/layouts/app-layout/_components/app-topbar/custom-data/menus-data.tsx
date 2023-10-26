@@ -13,8 +13,7 @@ export const menuLoginData = [
         icon    : 'pi pi-sign-out',
         command : () => {
           signOut()
-            .then((res) => { console.log(res); })
-            .catch((err) => { console.log(err); });
+            .catch((err) => { console.error(err); });
         }
       }
     ]

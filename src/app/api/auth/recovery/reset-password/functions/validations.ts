@@ -56,7 +56,7 @@ export const validateToken = async (
   try {
     const { email } = tokenValuesAndTimeValidation(authorization);
 
-    const userData = await prisma.user.findUnique({
+    const userData = await prisma.users.findUnique({
       where: { email }
     });
 

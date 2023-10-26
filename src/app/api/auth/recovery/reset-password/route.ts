@@ -25,7 +25,7 @@ export async function POST (request: Request) {
       parseInt(process.env.SALT_OR_ROUNDS_PASS as string)
     );
 
-    await prisma.user.update({
+    await prisma.users.update({
       where : { email: data?.email as string },
       data  : { password: hashedPassword }
     });

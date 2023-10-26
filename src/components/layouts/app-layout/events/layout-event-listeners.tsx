@@ -13,7 +13,6 @@ export const useProfileMenuOutsideClickListener = (
   ] = useEventListener({
     type     : 'click',
     listener : (event) => {
-      console.log('click');
       /* eslint-disable  */
       const isOutsideClicked = !(
         topbarRef.current?.topbarmenu?.isSameNode(event.target as Node) ||

@@ -1,9 +1,9 @@
 'use server';
 
 import React from 'react';
-import { Button, Column, DataTable, FilterMatchMode, FilterOperator, InputText } from '../../../../utils/prime-react';
 import { type Locale } from '@/i18n.config';
 import { getDictionary } from '@/utils/internationalization/dictionary';
+import { Button, Column, DataTable, FilterMatchMode, /* FilterOperator, */ InputText } from '@/utils/prime-react';
 
 interface Category {
   id: string
@@ -56,8 +56,8 @@ export default async function MovementsPage ({
 
     _filters.global.value = value;
 
-    setFilters(_filters);
-    setGlobalFilterValue(value);
+    // setFilters(_filters);
+    // setGlobalFilterValue(value);
   };
   const renderHeader = () => {
     return (
