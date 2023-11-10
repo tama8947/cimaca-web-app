@@ -6,7 +6,7 @@ import './styled-border-card.scss';
 export default function StyledBorderCard ({
   children
 }: {
-  children: React.ReactNode
+  readonly children: React.ReactNode
 }) {
   const { layoutConfig } = useContext(LayoutContext);
 
