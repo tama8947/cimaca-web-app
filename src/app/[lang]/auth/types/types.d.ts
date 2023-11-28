@@ -1,4 +1,4 @@
-declare interface SubmitAuthActionFunction<ModuleFormData> {
+declare type SubmitAuthActionFunction<ModuleFormData> = {
   setLoading: Dispatch<SetStateAction<boolean>>
   data: ModuleFormData
   router: AppRouterInstance
@@ -6,7 +6,7 @@ declare interface SubmitAuthActionFunction<ModuleFormData> {
   token?: string
 }
 
-declare interface ParamsFocusErrorFunction<FormikInstance> {
+declare type ParamsFocusErrorFunction<FormikInstance> = {
   formikInstance?: FormikInstance
   messageError?: string
 }

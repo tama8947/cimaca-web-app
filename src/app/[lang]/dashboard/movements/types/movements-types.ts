@@ -1,4 +1,4 @@
-export interface Category {
+export type Category = {
   id: string
   created_at: string
   updated_at: string
@@ -9,7 +9,7 @@ export interface Category {
   optional: string
 }
 
-export interface Movement {
+export type Movement = {
   id: string
   created_at: Date
   updated_at: Date

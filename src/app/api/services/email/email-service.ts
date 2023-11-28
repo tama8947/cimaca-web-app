@@ -6,7 +6,7 @@ import type SMTPTransport from 'nodemailer/lib/smtp-transport';
 
 type SendEmailOptions = Mail.Options;
 
-interface ParametersEmailService { awsCredentials?: boolean }
+type ParametersEmailService = { awsCredentials?: boolean }
 
 export default class EmailService {
   private readonly transporter: Transporter<SMTPTransport.SentMessageInfo>;

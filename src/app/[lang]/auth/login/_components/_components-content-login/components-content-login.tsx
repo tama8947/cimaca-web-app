@@ -16,9 +16,9 @@ export function ContentHead () {
   );
 }
 
-interface CardInputProps {
-  loading: boolean
-  formikInstance: FormikInstance
+type CardInputProps = {
+  readonly loading: boolean
+  readonly formikInstance: FormikInstance
 }
 
 export function ContentInputs ({ formikInstance, loading }: CardInputProps) {

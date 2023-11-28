@@ -34,7 +34,7 @@ const generateJWTString = (payload: object) => {
   }
 };
 
-interface RequestData {
+type RequestData = {
   email: string
 }
 

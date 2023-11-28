@@ -1,4 +1,4 @@
-declare interface AxiosErrorResponse {
+declare type AxiosErrorResponse = {
   response: {
     data: string
   }

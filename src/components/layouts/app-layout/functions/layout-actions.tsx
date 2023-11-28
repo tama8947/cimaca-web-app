@@ -35,7 +35,7 @@ export const blockBodyScroll = (): void => {
   /* eslint-enable  */
 };
 
-interface ParamsHideProfileMenu {
+type ParamsHideProfileMenu = {
   setLayoutState: LayoutContextProps['setLayoutState']
   unbindProfileMenuOutsideClickListener: () => void
 }
@@ -49,7 +49,7 @@ export const hideProfileMenu = (
   paramsHideProfileMenu.unbindProfileMenuOutsideClickListener();
 };
 
-interface ParamsHideMenu {
+type ParamsHideMenu = {
   setLayoutState: LayoutContextProps['setLayoutState']
   unbindMenuOutsideClickListener: () => void
 }

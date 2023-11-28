@@ -8,14 +8,14 @@ export type Page<P = object> = NextPage<P> & {
 
 /* AppTopbar Types */
 export type NodeRef = MutableRefObject<ReactNode>;
-export interface AppTopbarRef {
+export type AppTopbarRef = {
   menubutton?: HTMLButtonElement | null
   topbarmenu?: HTMLDivElement | null
   topbarmenubutton?: HTMLButtonElement | null
 }
 
 /* Context Types */
-export interface LayoutState {
+export type LayoutState = {
   staticMenuDesktopInactive: boolean
   overlayMenuActive: boolean
   profileSidebarVisible: boolean
@@ -24,7 +24,7 @@ export interface LayoutState {
   menuHoverActive: boolean
 }
 
-export interface LayoutConfig {
+export type LayoutConfig = {
   ripple: boolean
   inputStyle: string
   menuMode: string
@@ -33,7 +33,7 @@ export interface LayoutConfig {
   scale: number
 }
 
-export interface LayoutContextProps {
+export type LayoutContextProps = {
   layoutConfig: LayoutConfig
   setLayoutConfig: Dispatch<SetStateAction<LayoutConfig>>
   layoutState: LayoutState
@@ -42,11 +42,12 @@ export interface LayoutContextProps {
   showProfileSidebar: () => void
 }
 
-export interface ChildContainerProps {
+export type ChildContainerProps = {
   children: ReactNode
 }
 
-export interface MenuModel {
+export type MenuModel = {
+  badge?: string
   label: string
   icon?: string
   items?: MenuModel[]
@@ -56,12 +57,12 @@ export interface MenuModel {
   seperator?: boolean
 }
 
-interface CommandProps {
+type CommandProps = {
   originalEvent: React.MouseEvent<HTMLAnchorElement, MouseEvent>
   item: unknown
 }
 
-export interface AppMenuItem extends MenuModel {
+export type AppMenuItem = {
   items?: AppMenuItem[]
   badge?: 'UPDATED' | 'NEW'
   badgeClass?: string
@@ -71,8 +72,8 @@ export interface AppMenuItem extends MenuModel {
   disabled?: boolean
   replaceUrl?: boolean
   command?: ({ originalEvent, item }: CommandProps) => void
-}
-export interface AppMenuItemProps {
+} & MenuModel
+export type AppMenuItemProps = {
   item?: AppMenuItem
   parentKey?: string
   index?: number
@@ -80,7 +81,7 @@ export interface AppMenuItemProps {
   className?: string
 }
 
-export interface MenuContextProps {
+export type MenuContextProps = {
   activeMenu: string
   setActiveMenu: Dispatch<SetStateAction<string>>
 }

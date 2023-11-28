@@ -3,7 +3,7 @@ import './layout.scss';
 export default function ForgotPasswordLayout ({
   children
 }: {
-  children: React.ReactNode
+  readonly children: React.ReactNode
 }) {
   return (
     <div className="forgot-password-layout overflow-x-hidden w-full h-screen flex justify-content-center align-items-center">

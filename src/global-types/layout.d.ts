@@ -9,23 +9,23 @@ type Page<P = object> = NextPage<P> & {
 }
 
 /* Breadcrumb Types */
-export interface AppBreadcrumbProps {
+export type AppBreadcrumbProps = {
   className?: string
 }
 
-export interface Breadcrumb {
+export type Breadcrumb = {
   labels?: string[]
   to?: string
 }
 
-export interface BreadcrumbItem {
+export type BreadcrumbItem = {
   label: string
   to?: string
   items?: BreadcrumbItem[]
 }
 
 /* Context Types */
-export interface LayoutState {
+export type LayoutState = {
   staticMenuDesktopInactive: boolean
   overlayMenuActive: boolean
   profileSidebarVisible: boolean
@@ -34,7 +34,7 @@ export interface LayoutState {
   menuHoverActive: boolean
 }
 
-export interface LayoutConfig {
+export type LayoutConfig = {
   ripple: boolean
   inputStyle: string
   menuMode: string
@@ -43,7 +43,7 @@ export interface LayoutConfig {
   scale: number
 }
 
-export interface LayoutContextProps {
+export type LayoutContextProps = {
   layoutConfig: LayoutConfig
   setLayoutConfig: Dispatch<SetStateAction<LayoutConfig>>
   layoutState: LayoutState
@@ -52,23 +52,23 @@ export interface LayoutContextProps {
   showProfileSidebar: () => void
 }
 
-export interface MenuContextProps {
+export type MenuContextProps = {
   activeMenu: string
   setActiveMenu: Dispatch<SetStateAction<string>>
 }
 
 /* AppConfig Types */
-export interface AppConfigProps {
+export type AppConfigProps = {
   simple?: boolean
 }
 
 /* AppMenu Types */
-interface CommandProps {
+type CommandProps = {
   originalEvent: React.MouseEvent<HTMLAnchorElement, MouseEvent>
   item: MenuModelItem
 }
 
-export interface MenuModel {
+export type MenuModel = {
   label: string
   icon?: string
   items?: MenuModel[]
@@ -78,11 +78,11 @@ export interface MenuModel {
   seperator?: boolean
 }
 
-export interface MenuProps {
+export type MenuProps = {
   model: MenuModel[]
 }
 
-export interface AppMenuItem extends MenuModel {
+export type AppMenuItem = {
   items?: AppMenuItem[]
   badge?: 'UPDATED' | 'NEW'
   badgeClass?: string
@@ -92,9 +92,9 @@ export interface AppMenuItem extends MenuModel {
   disabled?: boolean
   replaceUrl?: boolean
   command?: ({ originalEvent, item }: CommandProps) => void
-}
+} & MenuModel
 
-export interface AppMenuItemProps {
+export type AppMenuItemProps = {
   item?: AppMenuItem
   parentKey?: string
   index?: number

@@ -4,19 +4,19 @@ import { type DefaultJWT } from 'next-auth/jwt';
 
 type UnwrapPromise<T> = T extends Promise<infer U> ? U : T;
 
-declare type UserType = UnwrapPromise<ReturnType<typeof PrismaClient['prototype']['user']['findFirst']>>;
+declare type UserType = UnwrapPromise<ReturnType<typeof PrismaClient['prototype']['users']['findFirst']>>;
 
 declare module 'next-auth'{
-  interface Session {
+  type Session = {
     user: UserType & DefaultSession
   }
-  interface User extends UserType extends DefaultUser {
+  type User = {
     role: string
-  }
+  } & UserType & DefaultUser
 }
 
 declare module 'next-auth/jwt'{
-  interface JWT extends DefaultJWT {
+  type JWT = {
     role: string
-  }
+  } & DefaultJWT
 }

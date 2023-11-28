@@ -54,6 +54,8 @@
         "semi": ["error", "always"],
         "sort-imports": ["error", { "ignoreCase": true, "ignoreDeclarationSort": true }],
         "tsx-a11y/anchor-is-valid": ["off"],
-        "no-console":["error", {"allow":["warn", "error","info"]}]
+        "no-console":["error", {"allow":["warn", "error","info"]}],
+        "@typescript-eslint/consistent-type-definitions": ["error", "type"],
+        "react/prefer-read-only-props": ["error"]
     }
 }

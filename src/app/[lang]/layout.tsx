@@ -24,8 +24,8 @@ export default function RootLayout ({
   children,
   params
 }: {
-  children: React.ReactNode
-  params: { lang: Locale }
+  readonly children: React.ReactNode
+  readonly params: { lang: Locale }
 
 }) {
   const toastRef = useRef<Toast>(null);

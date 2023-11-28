@@ -59,9 +59,9 @@ export async function middleware (request: NextRequest) {
     return NextResponse.redirect(new URL('/auth/login', request.url));
   }
 
-  if (isAuthRoute(pathName) && !pathnameIsMissingLocale) return loginRedirect(request, session);
+  if (isAuthRoute(pathName) && !pathnameIsMissingLocale) return loginRedirect(request, session as JWT);
 
-  if (!isAuthRoute(pathName) && !pathnameIsMissingLocale) return logoutRedirect(request, session);
+  if (!isAuthRoute(pathName) && !pathnameIsMissingLocale) return logoutRedirect(request, session as JWT);
 
   // return NextResponse.next();
   // Redirect if there is no locale

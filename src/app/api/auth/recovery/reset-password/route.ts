@@ -4,7 +4,7 @@ import { validateToken } from './functions/validations';
 
 const prisma = new PrismaClient();
 
-interface RequestData { password: string }
+type RequestData = { password: string }
 
 export async function POST (request: Request) {
   const authorization = request.headers.get('Authorization');

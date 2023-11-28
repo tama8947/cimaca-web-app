@@ -1,11 +1,11 @@
 import { PrismaClient } from '@prisma/client';
 import jwt from 'jsonwebtoken';
 
-interface ErrorResponsesRequest {
+type ErrorResponsesRequest = {
   message: string
 }
 
-interface StatusValidationResponse {
+type StatusValidationResponse = {
   message: string
   status: number
   data?: { email: string }

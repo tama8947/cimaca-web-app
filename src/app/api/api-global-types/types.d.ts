@@ -3,7 +3,7 @@ declare module '*.html' {
   export default content;
 }
 
-declare interface ErrorNodemailerRequest {
+declare type ErrorNodemailerRequest = {
   Error?: {
     Message: string
   }

@@ -1,3 +1,10 @@
+.p-inputtext-sm,
+.p-button-sm {
+  height: 35px;
+  .p-dropdown-label {
+    padding-top: 0.5rem;
+  }
+}
 /* :root {
   --max-width: 1100px;
   --border-radius: 12px;

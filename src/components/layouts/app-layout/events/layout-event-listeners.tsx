@@ -41,7 +41,7 @@ export const useProfileMenuOutsideClickListener = (
   };
 };
 
-interface ReferencesLayout {
+type ReferencesLayout = {
   sidebarRef: RefObject<HTMLDivElement>
   topbarRef: RefObject<AppTopbarRef>
 }
