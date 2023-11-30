@@ -11,12 +11,12 @@ export const appMenuData: AppMenuItem[] = [
       {
         label : 'Usuarios',
         icon  : 'pi pi-fw pi-id-card',
-        to    : '/dashboard/users'
+        to    : '/users'
       },
       {
         label : 'Referencias',
         icon  : 'pi pi-fw pi-check-square',
-        to    : '/dashboard/references'
+        to    : '/references'
       },
       {
         label : 'Float Label',
