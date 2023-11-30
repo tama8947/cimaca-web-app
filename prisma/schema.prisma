@@ -20,9 +20,11 @@ model Users {
   image              String?
   state              State
   verification_token String?
-  role               String?   @default("default")
+  role_id            String?
   created_at         DateTime  @default(now())
   updated_at         DateTime  @default(now()) @updatedAt
+
+  role Roles? @relation(fields: [role_id], references: [id])
 
   daily_incomecuts DailyIncomeCuts[]
   daily_movement   DailyMovementNovelties[]
@@ -64,7 +66,7 @@ model References {
   id                String                   @id @default(cuid())
   created_at        DateTime                 @default(now())
   updated_at        DateTime                 @default(now()) @updatedAt
-  state             String
+  state             State
   domain            String
   range_value       String
   description       String?
@@ -73,6 +75,43 @@ model References {
   daily_income_cuts DailyIncomeCuts[]
 
   @@map("tbl_references")
+}
+
+model Roles {
+  id         String   @id @default(cuid())
+  name       String   @unique
+  created_at DateTime @default(now())
+  updated_at DateTime @default(now()) @updatedAt
+
+  Users                     Users[]
+  roles_modules_permissions RolesModulesPermissions[]
+
+  @@map("tbl_roles")
+}
+
+model Modules {
+  id                        String                    @id @default(cuid())
+  parent_id                 String?
+  name                      String                    @unique
+  label                     String
+  icon                      String
+  url                       String?
+  created_at                DateTime                  @default(now())
+  updated_at                DateTime                  @default(now()) @updatedAt
+  roles_modules_permissions RolesModulesPermissions[]
+
+  @@map("tbl_modules")
+}
+
+model RolesModulesPermissions {
+  role        Roles    @relation(fields: [role_id], references: [id])
+  role_id     String
+  module      Modules  @relation(fields: [module_id], references: [id])
+  module_id   String
+  permissions String[]
+
+  @@id([role_id, module_id])
+  @@map("tbl_roles_modules")
 }
 
 enum State {

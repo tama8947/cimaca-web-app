@@ -1,6 +1,7 @@
 'use client';
 
 import { Inter } from 'next/font/google';
+import { usePathname } from 'next/navigation';
 import { SessionProvider } from 'next-auth/react';
 import 'primeflex/primeflex.min.css';
 import 'primeicons/primeicons.css';
@@ -8,6 +9,8 @@ import 'primereact/resources/primereact.min.css';
 import 'primereact/resources/themes/lara-light-indigo/theme.css';
 import { Toast } from 'primereact/toast';
 import { useRef } from 'react';
+import { QueryClient, QueryClientProvider } from 'react-query';
+import AppLayout from '@/components/layouts/app-layout/app-layout';
 import { NotificationContext } from '@/components/layouts/app-layout/contexts/custom-context';
 import { LayoutProvider } from '@/components/layouts/app-layout/contexts/layout-context';
 import '@/components/layouts/app-layout/styles/layout.scss';
@@ -28,7 +31,16 @@ export default function RootLayout ({
   readonly params: { lang: Locale }
 
 }) {
+  const pathname = usePathname();
+
+  const queryClient = new QueryClient();
+
+  const excludedRoutes = ['auth/login'];
+
+  const isExcludedRoute = excludedRoutes.some((route) => pathname.includes(route));
+
   const toastRef = useRef<Toast>(null);
+
   return (
     <html lang={params.lang}>
       <head>
@@ -39,7 +51,13 @@ export default function RootLayout ({
           <NotificationContext.Provider value={toastRef}>
             <body className={inter.className}>
               <Toast ref={toastRef} />
-              {children}
+             {isExcludedRoute
+               ? children
+               : <QueryClientProvider client={queryClient}>
+                    <AppLayout>
+                        {children}
+                    </AppLayout>
+              </QueryClientProvider> }
             </body>
           </NotificationContext.Provider>
         </LayoutProvider>

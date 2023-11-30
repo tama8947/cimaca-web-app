@@ -41,7 +41,7 @@ export default function Sidebar () {
       <div className="flex flex-col h-full">
         <ul className="whitespace-pre px-2.5 text-[0.9rem] py-5 flex flex-col gap-1 font-medium overflow-x-hidden scrollbar-thin scrollbar-track-white scrollbar-thumb-slate-100">
           <li>
-            <Link className={'link'} href="/dashboard/users">
+            <Link className={'link'} href="/users">
               <i
                 className="pi pi-users min-w-max"
                 style={{ fontSize: '1.5rem' }}
@@ -50,7 +50,7 @@ export default function Sidebar () {
             </Link>
           </li>
           <li>
-            <Link className={'link'} href="/dashboard/references">
+            <Link className={'link'} href="/references">
               <i
                 className="pi pi-wrench min-w-max"
                 style={{ fontSize: '1.5rem' }}
@@ -71,7 +71,7 @@ export default function Sidebar () {
             <></>
               )}
           <li>
-            <Link className="link" href="/dashboard/references">
+            <Link className="link" href="/references">
               <i className="pi pi-wrench" style={{ fontSize: '1.5rem' }}></i>
               Referencias
             </Link>
