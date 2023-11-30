@@ -23,11 +23,16 @@ async function main () {
 
   const moduleRecord = await prisma.modules.upsert({
     where  : { name: 'users' },
-    update : {},
-    create : {
+    update : {
       name  : 'users',
       label : 'Usuarios',
-      icon  : 'users',
+      icon  : 'pi pi-fw pi-id-card',
+      url   : '/users'
+    },
+    create: {
+      name  : 'users',
+      label : 'Usuarios',
+      icon  : 'pi pi-fw pi-id-card',
       url   : '/users'
     }
   });

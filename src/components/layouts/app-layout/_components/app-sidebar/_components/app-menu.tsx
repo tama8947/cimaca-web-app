@@ -1,14 +1,29 @@
 'use client';
+
 import Link from 'next/link';
+import { type AppMenuItem } from '@/global-types/layout';
 import { MenuProvider } from '../contexts/menu-context';
 import { appMenuData } from '../custom-data/app-menu-data';
 import AppMenuItemMap from './app-menu-item';
+import { useGetMenuData } from './request-menudata';
 
 export default function AppMenu () {
+  const { data, isLoading } = useGetMenuData();
+
+  const modules = () => [{
+    label : 'Modules',
+    items : data?.map<AppMenuItem>((module) => ({
+      label: module.module.label, icon: module.module.icon, to: module.module.url
+    }))
+  }];
+
+  const loading: AppMenuItem[] = [{ label: 'Loading...', icon: 'pi pi-spin pi-spinner', disabled: true }];
+
   return (
     <MenuProvider>
       <ul className="layout-menu">
-        {appMenuData.map((item, i) => {
+
+        {appMenuData.concat(isLoading ? loading : modules()).map((item, i) => {
           return item?.seperator === undefined
             ? (
             <AppMenuItemMap
@@ -28,13 +43,7 @@ export default function AppMenu () {
           target="_blank"
           style={{ cursor: 'pointer' }}
         >
-          {/* <img
-            alt="Prime Blocks"
-            className="w-full mt-3"
-            src={`/layout/images/banner-primeblocks${
-              layoutConfig.colorScheme === "light" ? "" : "-dark"
-            }.png`}
-          /> */}
+
         </Link>
       </ul>
     </MenuProvider>

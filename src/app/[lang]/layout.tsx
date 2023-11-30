@@ -9,6 +9,7 @@ import 'primereact/resources/primereact.min.css';
 import 'primereact/resources/themes/lara-light-indigo/theme.css';
 import { Toast } from 'primereact/toast';
 import { useRef } from 'react';
+import { QueryClient, QueryClientProvider } from 'react-query';
 import AppLayout from '@/components/layouts/app-layout/app-layout';
 import { NotificationContext } from '@/components/layouts/app-layout/contexts/custom-context';
 import { LayoutProvider } from '@/components/layouts/app-layout/contexts/layout-context';
@@ -31,6 +32,9 @@ export default function RootLayout ({
 
 }) {
   const pathname = usePathname();
+
+  const queryClient = new QueryClient();
+
   const excludedRoutes = ['auth/login'];
 
   const isExcludedRoute = excludedRoutes.some((route) => pathname.includes(route));
@@ -49,9 +53,11 @@ export default function RootLayout ({
               <Toast ref={toastRef} />
              {isExcludedRoute
                ? children
-               : <AppLayout>
-                   {children}
-              </AppLayout>}
+               : <QueryClientProvider client={queryClient}>
+                    <AppLayout>
+                        {children}
+                    </AppLayout>
+              </QueryClientProvider> }
             </body>
           </NotificationContext.Provider>
         </LayoutProvider>

@@ -7,6 +7,7 @@
 #### Frontend
 
 -   axios v1.5.0 o superior. Libreria para hacer peticiónes o llamadas al contenido de un enlace HTTP.
+-   react-query 3.39.3. React Query es una librería grande y completa que facilita el trabajo a la hora de realizar peticiones del lado del cliente hacia el servidor.
 -   next-auth v4.23.1 o superior. Libreria para implementar autenticación en Next.js.
 -   primereact v9.6.2 o superior. Libreria de componentes de UI PrimeFaces en su versión para React.
 -   primeflex v3.3.1 o superior. PrimeFlex es una libreria de utilidades CSS ligera y responsiva que acompaña también a las librerias Prime UI y a las páginas web estáticas.
