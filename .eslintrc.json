@@ -6,8 +6,7 @@
     },
     "extends": [
         "standard-with-typescript",
-        "plugin:react/recommended",
-        "next"
+        "plugin:react/recommended"
     ],
     "parserOptions": {
         "ecmaVersion": "latest",
@@ -21,10 +20,10 @@
         "@typescript-eslint/consistent-type-imports": "error",
         "@typescript-eslint/member-delimiter-style": "error",
         "@typescript-eslint/no-unused-vars": "error",
-        "@typescript-eslint/no-use-before-define": ["error", { "functions": false }],
+        "@typescript-eslint/no-use-before-define": [ "error", { "functions": false } ],
         "@typescript-eslint/prefer-destructuring": "off",
         "@typescript-eslint/semi": "off",
-        "@typescript-eslint/type-annotation-spacing": "error",       
+        "@typescript-eslint/type-annotation-spacing": "error",
         "@typescript-eslint/explicit-function-return-type": "off",
         "@typescript-eslint/key-spacing": "off",
         "@typescript-eslint/strict-boolean-expressions": "warn",
@@ -33,29 +32,29 @@
         "@typescript-eslint/no-floating-promises": "warn",
         "class-methods-use-this": "off",
         "comma-dangle": "error",
-        "import/no-anonymous-default-export": ["off"],
-        "import/order": ["error", { "groups": ["builtin", "external", "internal", "parent", ["sibling", "index"], "object", "type"], "warnOnUnassignedImports": true, "newlines-between": "never", "alphabetize": {"order": "asc"} }],
-        "key-spacing": ["error", { "align": {
-            "beforeColon": true,
-            "afterColon": true,
-            "on": "colon"
-        } }],
-        "no-multi-spaces": ["error", { "exceptions": { "Property": true } }],
+        "import/no-anonymous-default-export": [ "off" ],
+        "import/order": [ "error", { "groups": [ "builtin", "external", "internal", "parent", [ "sibling", "index" ], "object", "type" ], "warnOnUnassignedImports": true, "newlines-between": "never", "alphabetize": { "order": "asc" } } ],
+        "key-spacing": [ "error", { "align": {
+                    "beforeColon": true,
+                    "afterColon": true,
+                    "on": "colon"
+                } } ],
+        "no-multi-spaces": [ "error", { "exceptions": { "Property": true } } ],
         "no-unused-vars": "error",
-        "no-use-before-define": ["error", { "functions": false }],
+        "no-use-before-define": [ "error", { "functions": false } ],
         "prefer-destructuring": "off",
-        "react/function-component-definition": [ "error", { "namedComponents": "function-declaration", "unnamedComponents": "function-expression" }],
+        "react/function-component-definition": [ "error", { "namedComponents": "function-declaration", "unnamedComponents": "function-expression" } ],
         "react/jsx-props-no-spreading": "off",
         "react/react-in-tsx-scope": "off",
         "react/require-default-props": "off",
-        "react/tsx-filename-extension": ["off"],
-        "react/tsx-no-bind": ["off"],
-        "react/tsx-props-no-spreading": ["off"],
-        "semi": ["error", "always"],
-        "sort-imports": ["error", { "ignoreCase": true, "ignoreDeclarationSort": true }],
-        "tsx-a11y/anchor-is-valid": ["off"],
-        "no-console":["error", {"allow":["warn", "error","info"]}],
-        "@typescript-eslint/consistent-type-definitions": ["error", "type"],
-        "react/prefer-read-only-props": ["error"]
+        "react/tsx-filename-extension": [ "off" ],
+        "react/tsx-no-bind": [ "off" ],
+        "react/tsx-props-no-spreading": [ "off" ],
+        "semi": [ "error", "always" ],
+        "sort-imports": [ "error", { "ignoreCase": true, "ignoreDeclarationSort": true } ],
+        "tsx-a11y/anchor-is-valid": [ "off" ],
+        "no-console": [ "error", { "allow": [ "warn", "error", "info" ] } ],
+        "@typescript-eslint/consistent-type-definitions": [ "error", "type" ],
+        "react/prefer-read-only-props": [ "error" ]
     }
 }
