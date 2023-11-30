@@ -1,6 +1,7 @@
 'use client';
 
 import { Inter } from 'next/font/google';
+import { usePathname } from 'next/navigation';
 import { SessionProvider } from 'next-auth/react';
 import 'primeflex/primeflex.min.css';
 import 'primeicons/primeicons.css';
@@ -29,7 +30,13 @@ export default function RootLayout ({
   readonly params: { lang: Locale }
 
 }) {
+  const pathname = usePathname();
+  const excludedRoutes = ['auth/login'];
+
+  const isExcludedRoute = excludedRoutes.some((route) => pathname.includes(route));
+
   const toastRef = useRef<Toast>(null);
+
   return (
     <html lang={params.lang}>
       <head>
@@ -40,9 +47,11 @@ export default function RootLayout ({
           <NotificationContext.Provider value={toastRef}>
             <body className={inter.className}>
               <Toast ref={toastRef} />
-              <AppLayout>
-              {children}
-              </AppLayout>
+             {isExcludedRoute
+               ? children
+               : <AppLayout>
+                   {children}
+              </AppLayout>}
             </body>
           </NotificationContext.Provider>
         </LayoutProvider>
