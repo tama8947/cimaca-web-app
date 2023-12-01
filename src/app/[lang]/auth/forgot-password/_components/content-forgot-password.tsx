@@ -3,8 +3,6 @@ import { type FormikConfig, useFormik } from 'formik';
 import { useRouter } from 'next/navigation';
 import { Button } from 'primereact/button';
 import { useContext, useState } from 'react';
-import { NotificationContext } from '@/components/layouts/app-layout/contexts/custom-context';
-import StyledBorderCard from '@/components/molecules/styled-border-card/styled-border-card';
 import {
   initialValuesModule,
   moduleSchema
@@ -15,6 +13,8 @@ import {
   ContentInputs
 } from './_components-content-forgot-password/components-content-forgot-password';
 import { submitAction } from './functions-content-forgot-password/content-forgot-password-actions';
+import { NotificationContext } from '@/components/layouts/app-layout/contexts/custom-context';
+import StyledBorderCard from '@/components/molecules/styled-border-card/styled-border-card';
 
 export default function ContentForgotPassword () {
   const [loading, setLoading] = useState(false);

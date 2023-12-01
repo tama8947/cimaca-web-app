@@ -1,5 +1,5 @@
-import { URL_API } from '@/utils/url/api-url';
 import { type Movement } from '../types/movements-types';
+import { URL_API } from '@/utils/url/api-url';
 
 export async function getDailyMovements (
   searchParams: string

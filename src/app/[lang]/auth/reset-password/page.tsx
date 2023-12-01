@@ -1,6 +1,6 @@
 import { type Metadata } from 'next';
-import Favicon from '@/app/favicon.png';
 import ContentResetPassword from './_components/content-reset-password';
+import Favicon from '@/app/favicon.png';
 
 export const metadata: Metadata = {
   title : 'Cambiar Contraseña',

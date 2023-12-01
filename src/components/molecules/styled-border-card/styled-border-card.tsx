@@ -1,7 +1,7 @@
 import { classNames } from 'primereact/utils';
 import { useContext } from 'react';
-import { LayoutContext } from '@/components/layouts/app-layout/contexts/layout-context';
 import './styled-border-card.scss';
+import { LayoutContext } from '@/components/layouts/app-layout/contexts/layout-context';
 
 export default function StyledBorderCard ({
   children

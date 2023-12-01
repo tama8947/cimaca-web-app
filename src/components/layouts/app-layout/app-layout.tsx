@@ -3,10 +3,6 @@
 import PrimeReact from 'primereact/api';
 import { useMountEffect, useUnmountEffect } from 'primereact/hooks';
 import React, { useContext, useEffect, useRef } from 'react';
-import {
-  type AppTopbarRef,
-  type ChildContainerProps
-} from '@/components/layouts/app-layout/types/types';
 import AppSidebar from './_components/app-sidebar/app-sidebar';
 import AppTopBar from './_components/app-topbar/app-topbar';
 import { LayoutContext } from './contexts/layout-context';
@@ -16,6 +12,10 @@ import {
 } from './events/layout-event-listeners';
 import { blockBodyScroll } from './functions/layout-actions';
 import { containerClass } from './functions/layout-css-dynamic-class';
+import {
+  type AppTopbarRef,
+  type ChildContainerProps
+} from '@/components/layouts/app-layout/types/types';
 
 export default function Layout ({ children }: ChildContainerProps) {
   const { layoutConfig, layoutState, setLayoutState } =

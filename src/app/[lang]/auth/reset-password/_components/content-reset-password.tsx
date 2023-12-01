@@ -3,8 +3,6 @@ import { type FormikConfig, useFormik } from 'formik';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { Button } from 'primereact/button';
 import { useContext, useState } from 'react';
-import { NotificationContext } from '@/components/layouts/app-layout/contexts/custom-context';
-import StyledBorderCard from '@/components/molecules/styled-border-card/styled-border-card';
 import {
   initialValuesModule,
   moduleSchema
@@ -16,6 +14,8 @@ import {
 } from './_components-content-reset-password/components-content-reset-password';
 import { submitAction } from './functions-reset-password/content-reset-password-actions';
 import { useRedirectTokenValidation } from './functions-reset-password/content-reset-password-behaviour';
+import { NotificationContext } from '@/components/layouts/app-layout/contexts/custom-context';
+import StyledBorderCard from '@/components/molecules/styled-border-card/styled-border-card';
 
 export default function ContentResetPassword () {
   const [loading, setLoading] = useState(false);

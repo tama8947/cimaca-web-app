@@ -1,11 +1,11 @@
 'use server';
 
 import React from 'react';
+import { getDailyMovements } from './functions/fetch-data';
 import ReusableTable from '@/components/organisms/reusable-table/reusable-table';
 import { type CustomColumnProps } from '@/components/organisms/reusable-table/types/modified-types';
 import { type Locale } from '@/i18n.config';
 import { getDictionary } from '@/utils/internationalization/dictionary';
-import { getDailyMovements } from './functions/fetch-data';
 
 type PropsMovementsPage = {
   readonly params: { lang: Locale }

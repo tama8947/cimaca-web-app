@@ -1,6 +1,6 @@
 import { type Metadata } from 'next';
-import Favicon from '@/app/favicon.png';
 import ContentForgotPassword from './_components/content-forgot-password';
+import Favicon from '@/app/favicon.png';
 
 export const metadata: Metadata = {
   title : 'Recuperar Contraseña',

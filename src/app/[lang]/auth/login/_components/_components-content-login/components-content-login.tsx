@@ -1,10 +1,10 @@
 import { InputText } from 'primereact/inputtext';
 import { Password } from 'primereact/password';
 import { useEffect } from 'react';
-import ErrorMsg from '@/components/atoms/error-msg/error-msg';
-import Logo from '@/components/atoms/logo/logo';
 import { type FormikInstance } from '../../types/login-types';
 import { focusOnError } from '../functions-content-login/content-content-behaviour';
+import ErrorMsg from '@/components/atoms/error-msg/error-msg';
+import Logo from '@/components/atoms/logo/logo';
 
 export function ContentHead () {
   return (

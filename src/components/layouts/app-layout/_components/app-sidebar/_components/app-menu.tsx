@@ -1,11 +1,11 @@
 'use client';
 
 import Link from 'next/link';
-import { type AppMenuItem } from '@/global-types/layout';
 import { MenuProvider } from '../contexts/menu-context';
 import { appMenuData } from '../custom-data/app-menu-data';
 import AppMenuItemMap from './app-menu-item';
 import { useGetMenuData } from './request-menudata';
+import { type AppMenuItem } from '@/global-types/layout';
 
 export default function AppMenu () {
   const { data, isLoading } = useGetMenuData();

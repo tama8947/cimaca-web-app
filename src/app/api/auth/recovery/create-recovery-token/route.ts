@@ -1,6 +1,6 @@
 import { PrismaClient } from '@prisma/client';
 import jwt from 'jsonwebtoken';
-import EmailService from '../../../services/email/email-service';
+import { createEmailService } from '../../../services/email/email-service';
 import recoveryMail from './template-email/recovery-mail.html';
 
 const prisma = new PrismaClient();
@@ -59,7 +59,7 @@ export async function POST (request: Request) {
   const userData = await getUser(email);
 
   if (userData !== null && userData !== undefined) {
-    const emailService = new EmailService({ awsCredentials: true });
+    const emailService = createEmailService({ awsCredentials: true });
     const templateEmail = getTemplateEmail(
       `${userData.name} ${userData.last_name}`,
       recoverUrl

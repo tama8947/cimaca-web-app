@@ -1,9 +1,9 @@
 import { Password } from 'primereact/password';
 import { useEffect } from 'react';
-import ErrorMsg from '@/components/atoms/error-msg/error-msg';
-import Logo from '@/components/atoms/logo/logo';
 import { type FormikInstance } from '../../types/reset-password-types';
 import { focusOnError } from '../functions-reset-password/content-reset-password-behaviour';
+import ErrorMsg from '@/components/atoms/error-msg/error-msg';
+import Logo from '@/components/atoms/logo/logo';
 
 export function ContentHead () {
   return (

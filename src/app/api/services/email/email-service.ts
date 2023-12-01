@@ -39,7 +39,7 @@ const sendEmail = async (transporter: Transporter<SMTPTransport.SentMessageInfo>
 
 export const createEmailService = (params?: ParametersEmailService) => {
   const awsCredentials = params?.awsCredentials ?? true;
-  const transporter = createTransporter(params || {}, awsCredentials);
+  const transporter = createTransporter(params ?? {}, awsCredentials);
 
   return {
     sendEmail: async (options: SendEmailOptions) => await sendEmail(transporter, options)

@@ -46,6 +46,7 @@
         "react/function-component-definition": [ "error", { "namedComponents": "function-declaration", "unnamedComponents": "function-expression" } ],
         "react/jsx-props-no-spreading": "off",
         "react/react-in-tsx-scope": "off",
+        "react/react-in-jsx-scope": "off",
         "react/require-default-props": "off",
         "react/tsx-filename-extension": [ "off" ],
         "react/tsx-no-bind": [ "off" ],
