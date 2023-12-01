@@ -60,7 +60,7 @@ export default function Layout ({ children }: ChildContainerProps) {
 
   return (
     <>
-      <main className={containerClass(layoutState, layoutConfig)}>
+      <div className={containerClass(layoutState, layoutConfig)}>
         <div className="layout-topbar">
           <AppTopBar ref={topbarRef} />
         </div>
@@ -71,7 +71,7 @@ export default function Layout ({ children }: ChildContainerProps) {
           <div className="layout-main">{children}</div>
         </div>
         <div className="layout-mask"></div>
-      </main>
+      </div>
     </>
   );
 }

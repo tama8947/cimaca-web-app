@@ -1,6 +1,6 @@
 import { PrismaClient } from '@prisma/client';
 import { NextResponse } from 'next/server';
-import { PaginationService } from '../services/pagination/pagination-service';
+import { PaginationService } from '../../services/pagination/pagination-service';
 
 const prisma = new PrismaClient();
 

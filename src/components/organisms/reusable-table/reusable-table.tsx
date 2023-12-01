@@ -12,6 +12,7 @@ import { usePagination } from './functions/pagination/pagination-hooks/paginatio
 import { useDateSearch } from './functions/pagination/search-hooks/date-search-hook';
 import { useSearch } from './functions/pagination/search-hooks/general-search-hook';
 import { useSortTableColumns } from './functions/pagination/sort-hook';
+import { processData } from './functions/process-data';
 import { type CustomColumnProps } from './types/modified-types';
 
 type PropsReusableTable<T> = {
@@ -61,10 +62,9 @@ export default function ReusableTable<T extends object> ({
   useURLSearchParams([paginationURL, sortURL, searchURL, searchDateURL], data);
 
   return (
-    <>
         <SearchParamsContext.Provider value={searchStateAndActions}>
           <DataTable
-              value={data}
+              value={processData(data)}
               size="small"
               tableStyle={{ minWidth: '50rem' }}
               dataKey="id"
@@ -102,6 +102,5 @@ export default function ReusableTable<T extends object> ({
               ))}
           </DataTable>
         </SearchParamsContext.Provider>
-    </>
   );
 }

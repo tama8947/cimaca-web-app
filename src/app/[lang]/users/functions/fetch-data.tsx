@@ -1,12 +1,12 @@
-import { type Movement } from '../types/movements-types';
+import { type User } from '../types/types';
 import { URL_API } from '@/utils/url/api-url';
 
-export async function getDailyMovements (
+export async function getUsers (
   searchParams: string
-): Promise<[] | [Movement[], number]> {
+): Promise<[] | [User[], number]> {
   try {
     const response = await fetch(
-            `${URL_API}/api/modules/daily-movements?${searchParams}`,
+            `${URL_API}/api/modules/users?${searchParams}`,
             { next: { revalidate: 30 } }
     );
     const data = await response.json();
