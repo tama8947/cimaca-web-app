@@ -1,9 +1,9 @@
-import { PrismaClient } from '@prisma/client';
 import jwt from 'jsonwebtoken';
 import { createEmailService } from '../../../services/email/email-service';
 import recoveryMail from './template-email/recovery-mail.html';
+import { prismaInstance } from '@/app/api/services/db/prisma';
 
-const prisma = new PrismaClient();
+const prisma = prismaInstance;
 
 const getUser = async (email: string) => {
   return await prisma.users.findFirst({

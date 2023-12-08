@@ -1,8 +1,8 @@
-import { PrismaClient } from '@prisma/client';
 import { NextResponse } from 'next/server';
+import { prismaInstance } from '../../services/db/prisma';
 import { PaginationService } from '../../services/pagination/pagination-service';
 
-const prisma = new PrismaClient();
+const prisma = prismaInstance;
 
 export async function GET (request: Request) {
   const pagination = new PaginationService(request.url);
@@ -22,11 +22,9 @@ export async function GET (request: Request) {
       }),
       prisma.users.count({ where: pagination.getWhere() as never })
     ]);
-    await prisma.$disconnect();
     return NextResponse.json({ data: users, totalRecords: count });
   } catch (error) {
     console.error(error);
-    await prisma.$disconnect();
     return NextResponse.json({ message: 'Internal server error' });
   }
 }

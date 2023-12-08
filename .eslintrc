@@ -4,6 +4,7 @@
         "es2021": true,
         "node": true
     },
+    "ignorePatterns":[".eslintrc.cjs"],
     "extends": [
         "standard-with-typescript",
         "plugin:react/recommended"
@@ -56,6 +57,7 @@
         "tsx-a11y/anchor-is-valid": [ "off" ],
         "no-console": [ "error", { "allow": [ "warn", "error", "info" ] } ],
         "@typescript-eslint/consistent-type-definitions": [ "error", "type" ],
-        "react/prefer-read-only-props": [ "error" ]
+        "react/prefer-read-only-props": [ "error" ],
+        "react/jsx-indent":[2,2]
     }
 }

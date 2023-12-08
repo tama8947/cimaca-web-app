@@ -66,13 +66,13 @@ export default function DateFilter ({ fieldName, refOverlay }: PropsDateFilter) 
       placeholder='Fecha Inicial' mask='99/99/9999' dateFormat='dd/mm/yy'
       value={startDate} onChange={(e) => { setStartDate(e.value); }}
       />
-       {errorMessage(startDate as string) }
+    {errorMessage(startDate as string) }
 
     <Calendar className="p-inputtext-sm mt-2" showIcon
       placeholder='Fecha Final' mask='99/99/9999' dateFormat='dd/mm/yy'
       value={endDate} onChange={(e) => { setEndDate(e.value); }}
     />
-      {errorMessage(endDate as string) }
+    {errorMessage(endDate as string) }
 
     <div className='flex justify-content-between mt-4'>
       <Button size='small' label='Limpiar' outlined type='reset' onClick={clearDate} />

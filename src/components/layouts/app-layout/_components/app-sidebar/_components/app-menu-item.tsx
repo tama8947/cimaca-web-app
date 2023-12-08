@@ -102,26 +102,26 @@ export default function AppMenuItemMap (props: AppMenuItemProps) {
       )}
       {(item?.to === undefined || item?.items !== undefined) && item?.visible !== false
         ? (
-        <a
+          <a
           href={item?.url}
           onClick={(e) => { itemClick(e); }}
           className={classNames(item?.class, 'p-ripple')}
           target={item?.target}
           tabIndex={0}
         >
-          <i className={classNames('layout-menuitem-icon', item?.icon)}></i>
-          <span className="layout-menuitem-text">{item?.label}</span>
-          {item?.items !== undefined && (
+            <i className={classNames('layout-menuitem-icon', item?.icon)}></i>
+            <span className="layout-menuitem-text">{item?.label}</span>
+            {item?.items !== undefined && (
             <i className="pi pi-fw pi-angle-down layout-submenu-toggler"></i>
-          )}
-          <Ripple />
-        </a>
+            )}
+            <Ripple />
+          </a>
           )
         : null}
 
       {item?.to !== undefined && item?.items === undefined && item?.visible !== false
         ? (
-        <Link
+          <Link
           href={item?.to}
           replace={item?.replaceUrl}
           target={item?.target}
@@ -131,13 +131,13 @@ export default function AppMenuItemMap (props: AppMenuItemProps) {
           })}
           tabIndex={0}
         >
-          <i className={classNames('layout-menuitem-icon', item?.icon)}></i>
-          <span className="layout-menuitem-text">{item?.label}</span>
-          {item?.items !== undefined && (
+            <i className={classNames('layout-menuitem-icon', item?.icon)}></i>
+            <span className="layout-menuitem-text">{item?.label}</span>
+            {item?.items !== undefined && (
             <i className="pi pi-fw pi-angle-down layout-submenu-toggler"></i>
-          )}
-          <Ripple />
-        </Link>
+            )}
+            <Ripple />
+          </Link>
           )
         : null}
 

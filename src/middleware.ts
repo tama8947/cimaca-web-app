@@ -2,6 +2,7 @@ import { match as matchLocale } from '@formatjs/intl-localematcher';
 import Negotiator from 'negotiator';
 import { NextResponse } from 'next/server';
 import { getToken, type JWT } from 'next-auth/jwt';
+import { reviewPermissions } from './middleware/review-permissions';
 import type { NextRequest } from 'next/server';
 import { i18n } from '@/i18n.config';
 
@@ -36,6 +37,7 @@ const thereIsSession = async (request: NextRequest) => {
     req    : request,
     secret : process.env.NEXTAUTH_SECRET
   });
+
   return session;
 };
 
@@ -59,11 +61,14 @@ export async function middleware (request: NextRequest) {
     return NextResponse.redirect(new URL('/auth/login', request.url));
   }
 
+  const hasPermissions = reviewPermissions(pathName, session as JWT);
+
+  if (!hasPermissions) return NextResponse.redirect(new URL('/dashboard', request.url));
+
   if (isAuthRoute(pathName) && !pathnameIsMissingLocale) return loginRedirect(request, session as JWT);
 
   if (!isAuthRoute(pathName) && !pathnameIsMissingLocale) return logoutRedirect(request, session as JWT);
 
-  // return NextResponse.next();
   // Redirect if there is no locale
   if (pathnameIsMissingLocale) {
     const locale = getLocale(request);

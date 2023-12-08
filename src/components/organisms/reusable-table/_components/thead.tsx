@@ -31,28 +31,28 @@ export default function THead () {
 
   return (
     <div className='flex justify-content-between flex-column-reverse  md:flex-row'>
-        <form onSubmit={submitSearch}
+      <form onSubmit={submitSearch}
               className="flex justify-content-end align-items-center pt-1 w-full">
 
-              <Dropdown filter value={searchField}
+        <Dropdown filter value={searchField}
                 options={convertedOptions()} onChange={(ev) => { updateSearchState({ searchField: ev.value }); }}
                 className='p-inputtext-sm max-w-7rem md:max-w-min mr-2'/>
 
-              <span className=" mr-2">
+        <span className=" mr-2">
 
-                <InputText
+          <InputText
                     className="p-inputtext-sm w-full"
                     value={search}
                     onChange={(ev) => { updateSearchState({ search: ev.target.value }); }}
                     placeholder="Texto a buscar"
                 />
-              </span>
+        </span>
 
-                <Button size='small' type="submit" icon='pi pi-search' />
-                <Button className='ml-2' size='small'
+        <Button size='small' type="submit" icon='pi pi-search' />
+        <Button className='ml-2' size='small'
                 severity='secondary' icon='pi pi-replay' type='reset' onClick={cleanSearch} />
 
-        </form>
+      </form>
     </div>
   );
 }

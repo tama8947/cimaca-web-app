@@ -50,9 +50,9 @@ export default async function MovementsPage ({
   ];
 
   return (
-        <div>
-            <h1>{titles.movements}</h1>
-            <ReusableTable
+    <div>
+      <h1>{titles.movements}</h1>
+      <ReusableTable
                 customPagination={{
                   type         : 'offset',
                   totalRecords : totalRecords ?? 0,
@@ -62,6 +62,6 @@ export default async function MovementsPage ({
                 columns={columns}
                 data={movements ?? []}
             />
-        </div>
+    </div>
   );
 }

@@ -1,5 +1,5 @@
-import { PrismaClient } from '@prisma/client';
 import jwt from 'jsonwebtoken';
+import { prismaInstance } from '@/app/api/services/db/prisma';
 
 type ErrorResponsesRequest = {
   message: string
@@ -11,7 +11,7 @@ type StatusValidationResponse = {
   data?: { email: string }
 }
 
-const prisma = new PrismaClient();
+const prisma = prismaInstance;
 
 const tokenValuesAndTimeValidation = (authorization: string) => {
   const token = authorization.split(' ')[1];

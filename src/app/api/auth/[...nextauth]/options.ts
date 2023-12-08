@@ -1,9 +1,9 @@
-import { PrismaClient } from '@prisma/client';
 import bcrypt from 'bcrypt';
 import { type NextAuthOptions, type User } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
+import { prismaInstance } from '../../services/db/prisma';
 
-const prisma = new PrismaClient();
+const prisma = prismaInstance;
 
 export const options: NextAuthOptions = {
   providers: [
@@ -24,10 +24,19 @@ export const options: NextAuthOptions = {
         const user = await prisma.users.findFirst({
           where: {
             email: credentials?.email
+          },
+          include: {
+            role: {
+              include: {
+                roles_modules_permissions: {
+                  include: {
+                    module: true
+                  }
+                }
+              }
+            }
           }
         });
-
-        await prisma.$disconnect();
 
         if (user === null || user === undefined) {
           throw new Error('No existe el usuario ingresado.');
@@ -48,6 +57,7 @@ export const options: NextAuthOptions = {
       }
     })
   ],
+
   session: {
     strategy : 'jwt',
     maxAge   : 2 * 60 * 60

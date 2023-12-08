@@ -12,7 +12,7 @@ export default function AppMenu () {
 
   const modules = () => [{
     label : 'Modules',
-    items : data?.map<AppMenuItem>((module) => ({
+    items : data?.map<AppMenuItem>?.((module) => ({
       label: module.module.label, icon: module.module.icon, to: module.module.url
     }))
   }];
@@ -26,7 +26,7 @@ export default function AppMenu () {
         {appMenuData.concat(isLoading ? loading : modules()).map((item, i) => {
           return item?.seperator === undefined
             ? (
-            <AppMenuItemMap
+              <AppMenuItemMap
               item={item}
               root={true}
               index={i}
@@ -34,7 +34,7 @@ export default function AppMenu () {
             />
               )
             : (
-            <li className="menu-separator"></li>
+              <li className="menu-separator"></li>
               );
         })}
 

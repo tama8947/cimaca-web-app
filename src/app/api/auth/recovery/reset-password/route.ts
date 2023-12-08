@@ -1,8 +1,8 @@
-import { PrismaClient } from '@prisma/client';
 import bcrypt from 'bcrypt';
 import { validateToken } from './functions/validations';
+import { prismaInstance } from '@/app/api/services/db/prisma';
 
-const prisma = new PrismaClient();
+const prisma = prismaInstance;
 
 type RequestData = { password: string }
 

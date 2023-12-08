@@ -61,14 +61,14 @@ export default function Sidebar () {
 
           {isOpen
             ? (
-            <div className="border-y py-5 border-slate-300">
-              <small className="pl-3 text-slate-500 inline-block mb-2">
-                Categorias secciones
-              </small>
-            </div>
+              <div className="border-y py-5 border-slate-300">
+                <small className="pl-3 text-slate-500 inline-block mb-2">
+                  Categorias secciones
+                </small>
+              </div>
               )
             : (
-            <></>
+              <></>
               )}
           <li>
             <Link className="link" href="/references">

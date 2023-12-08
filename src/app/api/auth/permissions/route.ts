@@ -22,17 +22,11 @@ export async function GET (request: Request) {
           roles_modules_permissions: {
             include: {
               module: true
-            },
-            where: {
-              permissions: {
-                has: 'read'
-              }
             }
           }
         }
       }
     }
   });
-
-  return NextResponse.json(userWithModulesAndPermissions?.role?.roles_modules_permissions);
+  return NextResponse.json(userWithModulesAndPermissions?.role);
 }

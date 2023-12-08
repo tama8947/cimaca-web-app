@@ -1,3 +1,5 @@
+$font-size-table-content: 0.89rem;
+
 .p-inputtext-sm,
 .p-button-sm {
   height: 35px;
@@ -6,8 +8,29 @@
   }
 }
 
-.layout-main > main{
+.layout-main > main {
   margin-top: -19px;
+}
+.p-datatable{
+  .p-column-title {
+    font-size: 0.9rem;
+  }
+  td {
+    font-size: $font-size-table-content;
+  }
+  .p-paginator{
+    font-size: $font-size-table-content ;
+    
+   
+    .p-dropdown-label{
+      font-size: $font-size-table-content;
+    }
+  }  
+}
+.p-dropdown-panel{
+  .p-dropdown-item{
+    font-size: $font-size-table-content;
+  }
 }
 
 /* :root {

@@ -10,12 +10,13 @@ import 'primereact/resources/themes/lara-light-indigo/theme.css';
 import { Toast } from 'primereact/toast';
 import { useRef } from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
-import './globals.css';
+import './globals.scss';
 import AppLayout from '@/components/layouts/app-layout/app-layout';
 import { NotificationContext } from '@/components/layouts/app-layout/contexts/custom-context';
 import { LayoutProvider } from '@/components/layouts/app-layout/contexts/layout-context';
 import '@/components/layouts/app-layout/styles/layout.scss';
 import { i18n, type Locale } from '@/i18n.config';
+import PermissionHandler from '@/utils/special-components/permission-handler';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -47,17 +48,19 @@ export default function RootLayout ({
         <link rel='icon' href='/favicon.png'/>
       </head>
       <SessionProvider>
+
         <LayoutProvider>
           <NotificationContext.Provider value={toastRef}>
             <body className={inter.className}>
               <Toast ref={toastRef} />
-             {isExcludedRoute
-               ? children
-               : <QueryClientProvider client={queryClient}>
-                    <AppLayout>
-                        {children}
-                    </AppLayout>
-              </QueryClientProvider> }
+              {isExcludedRoute
+                ? children
+                : <QueryClientProvider client={queryClient}>
+                  <PermissionHandler />
+                  <AppLayout>
+                    {children}
+                  </AppLayout>
+                </QueryClientProvider> }
             </body>
           </NotificationContext.Provider>
         </LayoutProvider>

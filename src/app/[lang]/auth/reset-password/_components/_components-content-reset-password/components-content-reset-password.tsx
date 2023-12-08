@@ -7,13 +7,13 @@ import Logo from '@/components/atoms/logo/logo';
 
 export function ContentHead () {
   return (
-      <div className="text-center mb-5">
-       <Logo/>
-        <div className="text-900 text-2xl font-medium mb-3">Cambiar Contraseña</div>
-        <span className="text-600 text-sm font-medium">
-          Ingrese su nueva contraseña
-        </span>
-      </div>
+    <div className="text-center mb-5">
+      <Logo/>
+      <div className="text-900 text-2xl font-medium mb-3">Cambiar Contraseña</div>
+      <span className="text-600 text-sm font-medium">
+        Ingrese su nueva contraseña
+      </span>
+    </div>
   );
 }
 
@@ -27,12 +27,12 @@ export function ContentInputs ({ formikInstance, loading }: CardInputProps) {
     focusOnError({ formikInstance });
   }, [formikInstance]);
   return (
-      <>
-        <div className="flex flex-column mb-5 ">
-          <label htmlFor="email" className="block text-900 text-md font-medium ">
-            Contraseña
-          </label>
-          <Password
+    <>
+      <div className="flex flex-column mb-5 ">
+        <label htmlFor="email" className="block text-900 text-md font-medium ">
+          Contraseña
+        </label>
+        <Password
             id="password"
             name="password"
             type="password"
@@ -46,13 +46,13 @@ export function ContentInputs ({ formikInstance, loading }: CardInputProps) {
             inputClassName="w-full inputfocus"
             toggleMask
           />
-          <ErrorMsg msg={formikInstance?.errors?.password} />
-        </div>
-        <div className="flex flex-column mb-5 ">
-          <label htmlFor="email" className="block text-900 text-md font-medium ">
-            Confirmación Contraseña
-          </label>
-          <Password
+        <ErrorMsg msg={formikInstance?.errors?.password} />
+      </div>
+      <div className="flex flex-column mb-5 ">
+        <label htmlFor="email" className="block text-900 text-md font-medium ">
+          Confirmación Contraseña
+        </label>
+        <Password
             id="passwordConfirmation"
             name="passwordConfirmation"
             type="passwordConfirmation"
@@ -65,8 +65,8 @@ export function ContentInputs ({ formikInstance, loading }: CardInputProps) {
             inputClassName="w-full inputfocus"
             toggleMask
           />
-          <ErrorMsg msg={formikInstance?.errors?.passwordConfirmation} />
-        </div>
-      </>
+        <ErrorMsg msg={formikInstance?.errors?.passwordConfirmation} />
+      </div>
+    </>
   );
 }

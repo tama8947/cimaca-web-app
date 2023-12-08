@@ -29,5 +29,5 @@ export const useGetMenuData = () => {
 
   return useQuery(['menu_data'], async () => {
     return await getModules(data?.user?.email as string);
-  }, { enabled: data !== undefined });
+  }, { enabled: data?.user?.email !== undefined });
 };

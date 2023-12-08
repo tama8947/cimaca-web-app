@@ -4,10 +4,12 @@ type CustomSearchs = Array<{ type: string | null, name: string | null }>
 
 type QueryObject = { [key: string]: QueryObject | Date }
 
+type QueryType = Record<string, string | number | Record<string, unknown > >;
+
 export class PaginationService {
   private readonly searchParams: URLSearchParams;
   private readonly paginationType: PaginationTypes = 'offset';
-  private query: Record<string, string | number | Record<string, string | null | unknown>> = {};
+  private query: QueryType = {};
 
   constructor (requestUrl: string) {
     const { searchParams } = new URL(requestUrl);

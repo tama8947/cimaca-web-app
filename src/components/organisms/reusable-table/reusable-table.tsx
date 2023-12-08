@@ -13,12 +13,13 @@ import { useDateSearch } from './functions/pagination/search-hooks/date-search-h
 import { useSearch } from './functions/pagination/search-hooks/general-search-hook';
 import { useSortTableColumns } from './functions/pagination/sort-hook';
 import { processData } from './functions/process-data';
-import { type CustomColumnProps } from './types/modified-types';
+import { type ActionButton, type CustomColumnProps } from './types/modified-types';
 
 type PropsReusableTable<T> = {
   readonly loading?: boolean
   readonly columns: CustomColumnProps[]
   readonly customPagination?: CustomPaginationData
+  readonly actionButtons?: ActionButton[]
   readonly data: T[]
 }
 
@@ -26,7 +27,8 @@ export default function ReusableTable<T extends object> ({
   data,
   columns,
   loading,
-  customPagination
+  customPagination,
+  ...props
 }: PropsReusableTable<T>) {
   const {
     paginationState,
@@ -62,9 +64,9 @@ export default function ReusableTable<T extends object> ({
   useURLSearchParams([paginationURL, sortURL, searchURL, searchDateURL], data);
 
   return (
-        <SearchParamsContext.Provider value={searchStateAndActions}>
-          <DataTable
-              value={processData(data)}
+    <SearchParamsContext.Provider value={searchStateAndActions}>
+      <DataTable
+              value={processData(data, props.actionButtons)}
               size="small"
               tableStyle={{ minWidth: '50rem' }}
               dataKey="id"
@@ -75,7 +77,7 @@ export default function ReusableTable<T extends object> ({
               sortField={sortField}
               sortOrder={sortOrder}
               header={
-                  <THead />
+                <THead />
               }
               footer={
                 <Pagination paginationConfig={{
@@ -90,17 +92,17 @@ export default function ReusableTable<T extends object> ({
               // globalFilter={globalFilterValue}
               emptyMessage="No customers found."
           >
-              {columns.map((col, key) => (
-                  <Column key={key} {...col } filter showFilterMenu={false}
+        {columns.map((col, key) => (
+          <Column key={key} {...col } filter showFilterMenu={false}
                     filterElement={col.dataType === 'date'
-                      ? <OverlayFilters dataType={col.dataType} fieldName={col.field} />
-                      : <div></div>}
+                      ? <OverlayFilters key={key} dataType={col.dataType} fieldName={col.field} />
+                      : <div key={key}></div>}
                     sortFunction={(e) => {
                       return (e.data);
                     }
                   } />
-              ))}
-          </DataTable>
-        </SearchParamsContext.Provider>
+        ))}
+      </DataTable>
+    </SearchParamsContext.Provider>
   );
 }
