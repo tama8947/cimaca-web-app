@@ -1,4 +1,4 @@
-import { type User } from '../types/types';
+import { type User } from '../users-types/types';
 import { URL_API } from '@/utils/url/api-url';
 
 export async function getUsers (

@@ -1,7 +1,7 @@
 import Link from 'next/link';
-import { getUsers } from './functions/fetch-data';
-import { columns } from './table-config/columns';
-import { actionButtons } from './table-config/data-with-buttons';
+import { getUsers } from './users-functions/fetch-data';
+import { columns } from './users-table-config/columns';
+import { actionButtons } from './users-table-config/data-with-buttons';
 import ReusableTable from '@/components/organisms/reusable-table/reusable-table';
 import { type Locale } from '@/i18n.config';
 
