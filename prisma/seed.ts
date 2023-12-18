@@ -13,7 +13,7 @@ async function main () {
     }
   });
 
-  const roleNormal = await prisma.roles.upsert({
+  await prisma.roles.upsert({
     where  : { name: 'normalUser' },
     update : {},
     create : {
@@ -21,19 +21,51 @@ async function main () {
     }
   });
 
-  const moduleRecord = await prisma.modules.upsert({
+  const moduleUsers = await prisma.modules.upsert({
     where  : { name: 'users' },
     update : {
       name  : 'users',
       label : 'Usuarios',
-      icon  : 'pi pi-fw pi-id-card',
+      icon  : 'pi pi-fw pi-users',
       url   : '/users'
     },
     create: {
       name  : 'users',
       label : 'Usuarios',
-      icon  : 'pi pi-fw pi-id-card',
+      icon  : 'pi pi-fw pi-users',
       url   : '/users'
+    }
+  });
+
+  const moduleRoles = await prisma.modules.upsert({
+    where  : { name: 'roles' },
+    update : {
+      name  : 'roles',
+      label : 'Roles',
+      icon  : 'pi pi-fw pi-id-card',
+      url   : '/roles'
+    },
+    create: {
+      name  : 'roles',
+      label : 'Roles',
+      icon  : 'pi pi-fw pi-id-card',
+      url   : '/roles'
+    }
+  });
+
+  const moduleModules = await prisma.modules.upsert({
+    where  : { name: 'modules' },
+    update : {
+      name  : 'modules',
+      label : 'Modules',
+      icon  : 'pi pi-fw pi-th-large',
+      url   : '/modules'
+    },
+    create: {
+      name  : 'modules',
+      label : 'Modules',
+      icon  : 'pi pi-fw pi-th-large',
+      url   : '/modules'
     }
   });
 
@@ -81,13 +113,13 @@ async function main () {
   await prisma.rolesModulesPermissions.upsert({
     where: {
       role_id_module_id: {
-        role_id: role.id, module_id: moduleRecord.id
+        role_id: role.id, module_id: moduleUsers.id
       }
     },
     update : {},
     create : {
       role        : { connect: { id: role.id } },
-      module      : { connect: { id: moduleRecord.id } },
+      module      : { connect: { id: moduleUsers.id } },
       permissions : ['create', 'read', 'update']
     }
   });
@@ -95,18 +127,28 @@ async function main () {
   await prisma.rolesModulesPermissions.upsert({
     where: {
       role_id_module_id: {
-        role_id: roleNormal.id, module_id: moduleRecord.id
+        role_id: role.id, module_id: moduleRoles.id
       }
     },
-    update: {
-      role        : { connect: { id: roleNormal.id } },
-      module      : { connect: { id: moduleRecord.id } },
-      permissions : ['read']
+    update : {},
+    create : {
+      role        : { connect: { id: role.id } },
+      module      : { connect: { id: moduleRoles.id } },
+      permissions : ['create', 'read', 'update']
+    }
+  });
+
+  await prisma.rolesModulesPermissions.upsert({
+    where: {
+      role_id_module_id: {
+        role_id: role.id, module_id: moduleModules.id
+      }
     },
-    create: {
-      role        : { connect: { id: roleNormal.id } },
-      module      : { connect: { id: moduleRecord.id } },
-      permissions : ['read']
+    update : {},
+    create : {
+      role        : { connect: { id: role.id } },
+      module      : { connect: { id: moduleModules.id } },
+      permissions : ['create', 'read', 'update']
     }
   });
 

@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
-import { thereIsSession } from '../../services/auth/auth';
-import { prismaInstance } from '../../services/db/prisma';
+import { thereIsSession } from '../../../services/auth/auth';
+import { prismaInstance } from '../../../services/db/prisma';
 
 const prisma = prismaInstance;
 

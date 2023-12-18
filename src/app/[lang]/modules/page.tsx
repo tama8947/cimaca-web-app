@@ -1,7 +1,8 @@
 import Link from 'next/link';
-import { getUsers } from './users-fetch-data/get-for-table';
-import { columns } from './users-table-config/columns';
-import { actionButtons } from './users-table-config/custom-components';
+import { pluralName } from './metadata';
+import { getModulesForTable } from './modules-fetch-data/get-for-table';
+import { columns } from './modules-table-config/columns';
+import { actionButtons } from './modules-table-config/custom-components';
 import ReusableTable from '@/components/organisms/reusable-table/reusable-table';
 import { type Locale } from '@/i18n.config';
 
@@ -20,7 +21,7 @@ export default async function UsersPage ({
   searchParams
 }: PropsUsersPage) {
   const searchParamsString = new URLSearchParams(searchParams).toString();
-  const dataPromise = getUsers(searchParamsString);
+  const dataPromise = getModulesForTable(searchParamsString);
 
   const [data, totalRecords] = await dataPromise;
 
@@ -28,8 +29,8 @@ export default async function UsersPage ({
     <main>
       <div className="card p-fluid">
         <div className="flex flex-row justify-content-between align-items-center mb-2">
-          <h5 className="mb-0">Usuarios</h5>
-          <Link href={'users/create'}>
+          <h5 className="mb-0">{pluralName}</h5>
+          <Link href={'modules/create'}>
             <button className="p-button p-button-success w-auto p-button-sm">
               Crear
             </button>
@@ -39,8 +40,8 @@ export default async function UsersPage ({
           customPagination={{
             type         : 'offset',
             totalRecords : totalRecords ?? 0,
-            sortBy       : 'created_at',
-            sortOrder    : 'desc'
+            sortBy       : 'name',
+            sortOrder    : 'asc'
           }}
           columns={columns}
           actionButtons={actionButtons}

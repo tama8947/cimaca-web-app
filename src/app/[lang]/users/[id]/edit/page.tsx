@@ -4,7 +4,7 @@ import { InputText } from 'primereact/inputtext';
 
 export default function createUsersPage () {
   return <main>
-    <div className="card p-fluid">
+    <form className="card p-fluid">
       <h5>Editar Usuario</h5>
       <div className="formgrid grid">
         <div className="field col">
@@ -16,6 +16,6 @@ export default function createUsersPage () {
           <InputText id="email2" type="text" className='p-inputtext-sm'/>
         </div>
       </div>
-    </div>
+    </form>
   </main>;
 }

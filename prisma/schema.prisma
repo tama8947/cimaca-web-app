@@ -80,6 +80,7 @@ model References {
 model Roles {
   id         String   @id @default(cuid())
   name       String   @unique
+  state      State    @default(enabled)
   created_at DateTime @default(now())
   updated_at DateTime @default(now()) @updatedAt
 
@@ -96,6 +97,7 @@ model Modules {
   label                     String
   icon                      String
   url                       String?
+  state                     State                     @default(enabled)
   created_at                DateTime                  @default(now())
   updated_at                DateTime                  @default(now()) @updatedAt
   roles_modules_permissions RolesModulesPermissions[]

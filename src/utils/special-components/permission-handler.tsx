@@ -1,7 +1,7 @@
 import { usePathname } from 'next/navigation';
 import { useSession } from 'next-auth/react';
 import { useEffect } from 'react';
-import { useGetPermissions } from '@/config/global-hooks/permissions';
+import { useGetPermissions } from '@/config/global-hooks/get-permissions';
 import { type UserWithRoleType } from '@/global-types/permissions-types';
 
 export default function PermissionHandler () {

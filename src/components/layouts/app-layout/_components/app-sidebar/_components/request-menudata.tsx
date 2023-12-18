@@ -13,7 +13,7 @@ export type ModuleData = {
   url: string
 }
 
-export type Module = {
+export type RoleReadPermissions = {
   module: ModuleData
   module_id: string
   permissions: string[]
@@ -21,7 +21,7 @@ export type Module = {
 }
 
 const getModules = async (email: string) => {
-  return (await axios.get<Module[]>(`/api/modules/modules?email=${email}`)).data;
+  return (await axios.get<RoleReadPermissions[]>(`/api/modules/roles/read-permissions?email=${email}`)).data;
 };
 
 export const useGetMenuData = () => {

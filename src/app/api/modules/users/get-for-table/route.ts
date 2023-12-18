@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
-import { prismaInstance } from '../../services/db/prisma';
-import { PaginationService } from '../../services/pagination/pagination-service';
+import { prismaInstance } from '../../../services/db/prisma';
+import { PaginationService } from '../../../services/pagination/pagination-service';
 
 const prisma = prismaInstance;
 
@@ -12,16 +12,16 @@ export async function GET (request: Request) {
   }
 
   try {
-    const [dailyIncomeCuts, count] = await prisma.$transaction([
-      prisma.dailyIncomeCuts.findMany({
+    const [users, count] = await prisma.$transaction([
+      prisma.users.findMany({
         include: {
-          category: true
+          role: { include: { roles_modules_permissions: { include: { module: true } } } }
         },
         ...pagination.getPaginationQuery()
       }),
-      prisma.dailyIncomeCuts.count({ where: pagination.getWhere() as never })
+      prisma.users.count({ where: pagination.getWhere() as never })
     ]);
-    return NextResponse.json({ data: dailyIncomeCuts, totalRecords: count });
+    return NextResponse.json({ data: users, totalRecords: count });
   } catch (error) {
     console.error(error);
     return NextResponse.json({ message: 'Internal server error' });

@@ -14,7 +14,7 @@ export type ModuleData = {
   url: string
 }
 
-export type Module = {
+export type RoleReadPermissions = {
   module: ModuleData
   module_id: string
   permissions: string[]
@@ -29,7 +29,13 @@ export const useQueryPermissions = () => {
   const { data } = useSession();
   return useQuery(['get_permissions'], async () => {
     return await getPermissions(data?.user?.email as string);
-  }, { enabled: data?.user?.email !== undefined });
+  }, {
+    enabled              : data?.user?.email !== undefined,
+    refetchOnWindowFocus : true,
+    refetchOnReconnect   : true,
+    refetchOnMount       : true,
+    refetchInterval      : 5000
+  });
 };
 
 export const useGetPermissions = () => {
