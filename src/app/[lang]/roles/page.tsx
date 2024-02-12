@@ -21,7 +21,6 @@ export default async function UsersPage ({
 }: PropsUsersPage) {
   const searchParamsString = new URLSearchParams(searchParams).toString();
   const dataPromise = getRoles(searchParamsString);
-
   const [data, totalRecords] = await dataPromise;
 
   return (

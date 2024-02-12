@@ -28,9 +28,9 @@ export class PaginationService {
   }
 
   configureOffsetQuery () {
-    const pageIdx = parseInt(this.searchParams.get('page') as string) - 1;
-    const rows = parseInt(this.searchParams.get('rows') as string);
-    const orderByColumn = this.searchParams.get('orderBy') as string;
+    const pageIdx = parseInt(this.searchParams.get('page')!) - 1;
+    const rows = parseInt(this.searchParams.get('rows')!);
+    const orderByColumn = this.searchParams.get('orderBy')!;
     const sortOrder = this.searchParams.get('sortOrder');
     const skip = pageIdx * rows;
 
@@ -42,7 +42,7 @@ export class PaginationService {
   }
 
   getWhere () {
-    const searchField = this.searchParams.get('searchField') as string;
+    const searchField = this.searchParams.get('searchField')!;
     const search = this.searchParams.get('search');
 
     const customFilters = this.customFilters();
@@ -75,7 +75,7 @@ export class PaginationService {
 
     if (startDate === null || endDate === null) return {};
 
-    query[name as string] = {
+    query[name!] = {
       lte : new Date(endDate),
       gte : new Date(startDate)
     };

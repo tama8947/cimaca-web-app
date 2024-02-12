@@ -15,7 +15,7 @@ const validatePermission = (pathName: string, module: ModuleType) => {
 
 export const reviewPermissions = (pathName: string, session: JWT | null) => {
   const module = session?.role?.roles_modules_permissions.find((module) => pathName.includes(
-    module?.module?.url as string));
+    module?.module?.url ?? ''));
   // console.log(session?.role?.roles_modules_permissions, pathName, module);
 
   if (allowedRoutes.some((route) => pathName.includes(route))) return true;

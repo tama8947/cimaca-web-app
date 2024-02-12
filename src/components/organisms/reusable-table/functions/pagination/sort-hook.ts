@@ -21,8 +21,8 @@ const sortConvertionToCode = (sortOrder: SortOptions) => {
 const validSortPagination = (
   searchParams: ReadonlyURLSearchParams
 ) => {
-  const orderBy = searchParams.get('orderBy') as string;
-  const sortOrder = searchParams.get('sortOrder') as string;
+  const orderBy = searchParams.get('orderBy')!;
+  const sortOrder = searchParams.get('sortOrder')!;
 
   if (typeof orderBy !== 'string') return false;
 
@@ -47,8 +47,8 @@ export const useSortTableColumns = (initialFieldSort: SortHandling) => {
   };
 
   const updateSortStateFromURL = useCallback(() => {
-    const orderBy = searchParams.get('orderBy') as string;
-    const sortOrder = searchParams.get('sortOrder') as string;
+    const orderBy = searchParams.get('orderBy')!;
+    const sortOrder = searchParams.get('sortOrder')!;
 
     setSortConfig({
       sortField : orderBy,

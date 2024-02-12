@@ -6,7 +6,7 @@ const prisma = prismaInstance;
 
 export async function GET (request: Request) {
   const url = new URL(request.url);
-  const email = url.searchParams.get('email') as string;
+  const email = url.searchParams.get('email')!;
 
   const session = await thereIsSession(request);
 

@@ -28,7 +28,7 @@ const getPermissions = async (email: string) => {
 export const useQueryPermissions = () => {
   const { data } = useSession();
   return useQuery(['get_permissions'], async () => {
-    return await getPermissions(data?.user?.email as string);
+    return await getPermissions(data?.user?.email ?? '');
   }, {
     enabled              : data?.user?.email !== undefined,
     refetchOnWindowFocus : true,

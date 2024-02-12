@@ -6,7 +6,7 @@ export const useSearch = (columns: ColumnProps[]) => {
   const [firstLoad, setFirstLoad] = useState(false);
   const [searchState, setStateSearch] = useState<SearchState>({
     searchField: columns.filter((col) => !['numeric', 'date']
-      .includes(col.dataType as string))[0]?.field,
+      .includes(col.dataType!))[0]?.field,
     search: ''
   });
   const [searchURL, setSearchURL] = useState('');

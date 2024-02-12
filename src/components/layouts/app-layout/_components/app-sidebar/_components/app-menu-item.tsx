@@ -63,7 +63,7 @@ export default function AppMenuItemMap (props: AppMenuItemProps) {
     }
 
     // toggle active state
-    if (item?.items !== undefined) setActiveMenu(active ? (props.parentKey as string) : key);
+    if (item?.items !== undefined) setActiveMenu(active ? (props.parentKey!) : key);
     else setActiveMenu(key);
   };
 

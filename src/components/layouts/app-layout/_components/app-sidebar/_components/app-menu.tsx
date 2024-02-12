@@ -12,7 +12,7 @@ export default function AppMenu () {
 
   const modules = () => [{
     label : 'Modules',
-    items : data?.map<AppMenuItem>?.((module) => ({
+    items : data?.map<AppMenuItem>((module) => ({
       label: module.module.label, icon: module.module.icon, to: module.module.url
     }))
   }];

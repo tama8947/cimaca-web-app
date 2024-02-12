@@ -1,4 +1,4 @@
-'use client';
+// 'use client';
 
 import { type ActionButton } from '@/components/organisms/reusable-table/types/modified-types';
 

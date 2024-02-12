@@ -1,6 +1,5 @@
-'use server';
+// 'use client';
 
-import React from 'react';
 import { getDailyMovements } from './functions/fetch-data';
 import ReusableTable from '@/components/organisms/reusable-table/reusable-table';
 import { type CustomColumnProps } from '@/components/organisms/reusable-table/types/modified-types';
@@ -22,11 +21,8 @@ export default async function MovementsPage ({
   searchParams
 }: PropsMovementsPage) {
   const { titles } = await getDictionary(lang);
-
   const searchParamsString = new URLSearchParams(searchParams).toString();
-
   const movementsData = getDailyMovements(searchParamsString);
-
   const [movements, totalRecords] = await movementsData;
 
   const columns: CustomColumnProps[] = [

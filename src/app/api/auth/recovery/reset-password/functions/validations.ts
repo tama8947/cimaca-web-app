@@ -17,7 +17,7 @@ const tokenValuesAndTimeValidation = (authorization: string) => {
   const token = authorization.split(' ')[1];
   return jwt.verify(
     token,
-    process.env.SECRET_JWT as string
+    process.env.SECRET_JWT!
   ) as jwt.JwtPayload & { email: string };
 };
 

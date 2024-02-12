@@ -1,3 +1,5 @@
+// 'use server';
+
 import { type DataForTable, type Module } from '../modules-types/types';
 import { URL_API } from '@/utils/url/api-url';
 

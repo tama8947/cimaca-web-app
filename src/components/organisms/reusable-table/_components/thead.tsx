@@ -12,7 +12,7 @@ export default function THead () {
     cleanSearch
   } = useContext(SearchParamsContext);
 
-  const { search, searchField } = searchState as SearchState;
+  const { search, searchField } = searchState!;
 
   const convertedOptions = () => {
     return columns?.filter((column) => !['numeric', 'date']

@@ -11,8 +11,8 @@ const useOffsetPagination = (
   const searchParams = useSearchParams();
 
   const validateOffsetPagination = useCallback(() => {
-    const rows = parseInt(searchParams.get('rows') as string);
-    const page = parseInt(searchParams.get('page') as string);
+    const rows = parseInt(searchParams.get('rows')!);
+    const page = parseInt(searchParams.get('page')!);
 
     if (isNaN(rows)) return false;
 
@@ -32,8 +32,8 @@ const useOffsetPagination = (
   };
 
   const updateStatePaginationFromURL = useCallback(() => {
-    const rows = parseInt(searchParams.get('rows') as string);
-    const page = parseInt(searchParams.get('page') as string);
+    const rows = parseInt(searchParams.get('rows')!);
+    const page = parseInt(searchParams.get('page')!);
 
     const first = (page - 1) * rows;
 

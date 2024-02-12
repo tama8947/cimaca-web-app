@@ -43,7 +43,7 @@ export const options: NextAuthOptions = {
         }
 
         const isCorrectPassword = await bcrypt.compare(
-          credentials?.password as string,
+          credentials?.password ?? '',
           user?.password
         );
 
@@ -57,7 +57,6 @@ export const options: NextAuthOptions = {
       }
     })
   ],
-
   session: {
     strategy : 'jwt',
     maxAge   : 2 * 60 * 60

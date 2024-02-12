@@ -22,11 +22,11 @@ export async function POST (request: Request) {
   if (status === 200) {
     const hashedPassword = await bcrypt.hash(
       password,
-      parseInt(process.env.SALT_OR_ROUNDS_PASS as string)
+      parseInt(process.env.SALT_OR_ROUNDS_PASS!)
     );
 
     await prisma.users.update({
-      where : { email: data?.email as string },
+      where : { email: data?.email ?? '' },
       data  : { password: hashedPassword }
     });
 

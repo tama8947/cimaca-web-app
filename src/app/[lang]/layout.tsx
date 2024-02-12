@@ -1,5 +1,3 @@
-'use client';
-
 import { Inter } from 'next/font/google';
 import { usePathname } from 'next/navigation';
 import { SessionProvider } from 'next-auth/react';
@@ -7,12 +5,12 @@ import 'primeflex/primeflex.min.css';
 import 'primeicons/primeicons.css';
 import 'primereact/resources/primereact.min.css';
 import 'primereact/resources/themes/lara-light-indigo/theme.css';
-import { Toast } from 'primereact/toast';
-import { useRef } from 'react';
+// import { Toast } from 'primereact/toast';
+// import { useRef } from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import './globals.scss';
 import AppLayout from '@/components/layouts/app-layout/app-layout';
-import { NotificationContext } from '@/components/layouts/app-layout/contexts/custom-context';
+// import { NotificationContext } from '@/components/layouts/app-layout/contexts/custom-context';
 import { LayoutProvider } from '@/components/layouts/app-layout/contexts/layout-context';
 import '@/components/layouts/app-layout/styles/layout.scss';
 import { i18n, type Locale } from '@/i18n.config';
@@ -30,19 +28,15 @@ export default function RootLayout ({
 }: {
   readonly children: React.ReactNode
   readonly params: { lang: Locale }
-
 }) {
   const pathname = usePathname();
-
   const queryClient = new QueryClient();
-
   const excludedRoutes = ['auth/login'];
-
   const isExcludedRoute = excludedRoutes.some((route) => pathname.includes(route));
-
-  const toastRef = useRef<Toast>(null);
+  // const toastRef = useRef<Toast>(null);
 
   return (
+    // <html>
     <html lang={params.lang}>
       <head>
         <link rel='icon' href='/favicon.png'/>
@@ -50,19 +44,19 @@ export default function RootLayout ({
       <SessionProvider>
 
         <LayoutProvider>
-          <NotificationContext.Provider value={toastRef}>
-            <body className={inter.className}>
-              <Toast ref={toastRef} />
-              {isExcludedRoute
-                ? children
-                : <QueryClientProvider client={queryClient}>
-                  <PermissionHandler />
-                  <AppLayout>
-                    {children}
-                  </AppLayout>
-                </QueryClientProvider> }
-            </body>
-          </NotificationContext.Provider>
+          {/* <NotificationContext.Provider value={toastRef}> */}
+          <body className={inter.className}>
+            {/* <Toast ref={toastRef} /> */}
+            {isExcludedRoute
+              ? children
+              : <QueryClientProvider client={queryClient}>
+                <PermissionHandler />
+                <AppLayout>
+                  {children}
+                </AppLayout>
+              </QueryClientProvider> }
+          </body>
+          {/* </NotificationContext.Provider> */}
         </LayoutProvider>
       </SessionProvider>
     </html>

@@ -1,3 +1,5 @@
+'use client';
+
 import Link from 'next/link';
 import { pluralName } from './metadata';
 import { getModulesForTable } from './modules-fetch-data/get-for-table';
@@ -26,7 +28,7 @@ export default async function UsersPage ({
   const [data, totalRecords] = await dataPromise;
 
   return (
-    <main>
+    <>
       <div className="card p-fluid">
         <div className="flex flex-row justify-content-between align-items-center mb-2">
           <h5 className="mb-0">{pluralName}</h5>
@@ -48,6 +50,6 @@ export default async function UsersPage ({
           data={data ?? []}
         />
       </div>
-    </main>
+    </>
   );
 }

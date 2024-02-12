@@ -35,7 +35,7 @@ export default function ContentResetPassword () {
         data,
         router,
         toast,
-        token: searchParams.get('token') as string
+        token: searchParams.get('token') || undefined // Fix: Ensure token is of type string | undefined
       });
     }
   };

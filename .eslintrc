@@ -58,6 +58,7 @@
         "no-console": [ "error", { "allow": [ "warn", "error", "info" ] } ],
         "@typescript-eslint/consistent-type-definitions": [ "error", "type" ],
         "react/prefer-read-only-props": [ "error" ],
-        "react/jsx-indent":[2,2]
+        "react/jsx-indent":[2,2],
+        "@typescript-eslint/no-non-null-assertion": "warn"
     }
 }

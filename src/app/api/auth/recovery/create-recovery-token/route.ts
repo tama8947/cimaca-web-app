@@ -25,7 +25,7 @@ const generateJWTString = (payload: object) => {
       {
         ...payload
       },
-      process.env.SECRET_JWT as string,
+      process.env.SECRET_JWT!,
       { expiresIn: '2m' }
     );
   } catch (err) {

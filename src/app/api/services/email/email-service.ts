@@ -20,7 +20,7 @@ const createTransporter = (params: ParametersEmailService, awsCredentials: boole
   } else {
     return nodemailer.createTransport({
       host   : process.env.HOST_EMAIL,
-      port   : parseInt(process.env.PORT_EMAIL as string),
+      port   : parseInt(process.env.PORT_EMAIL!),
       secure : process.env.SECURE_EMAIL === 'true',
       auth   : {
         user : process.env.USER_EMAIL,

@@ -37,7 +37,7 @@ export default function ReusableTable<T extends object> ({
   } = usePagination(customPagination);
 
   const { sortURL, sortField, sortOrder, handleSort } = useSortTableColumns({
-    sortField : customPagination?.sortBy as string,
+    sortField : customPagination?.sortBy ?? '',
     sortOrder : customPagination?.sortOrder
   });
 

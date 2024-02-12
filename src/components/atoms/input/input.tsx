@@ -1,3 +1,5 @@
+'use client';
+
 import { InputText, type InputTextProps } from 'primereact/inputtext';
 import { classNames } from 'primereact/utils';
 import { type ForwardedRef, forwardRef } from 'react';

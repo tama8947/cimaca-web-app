@@ -28,6 +28,6 @@ export const useGetMenuData = () => {
   const { data } = useSession();
 
   return useQuery(['menu_data'], async () => {
-    return await getModules(data?.user?.email as string);
+    return await getModules(data?.user?.email ?? '');
   }, { enabled: data?.user?.email !== undefined });
 };
