@@ -1,13 +1,15 @@
+'use client';
+
 import Link from 'next/link';
 import { pluralName } from './metadata';
-import { getModulesForTable } from './modules-fetch-data/get-for-table';
+import { useGetModuleForTable } from './modules-fetch-data/get-for-table';
 import { columns } from './modules-table-config/columns';
 import { actionButtons } from './modules-table-config/custom-components';
 import ReusableTable from '@/components/organisms/reusable-table/reusable-table';
-import { type Locale } from '@/i18n.config';
+// import { type Locale } from '@/i18n.config';
 
 type PropsUsersPage = {
-  readonly params: { lang: Locale }
+  // readonly params: { lang: Locale }
   readonly searchParams:
   | string
   | string[][]
@@ -16,14 +18,12 @@ type PropsUsersPage = {
   | undefined
 };
 
-export default async function UsersPage ({
-  params: { lang },
+export default function UsersPage ({
   searchParams
 }: PropsUsersPage) {
   const searchParamsString = new URLSearchParams(searchParams).toString();
-  const dataPromise = getModulesForTable(searchParamsString);
 
-  const [data, totalRecords] = await dataPromise;
+  const { data, isLoading } = useGetModuleForTable(searchParamsString);
 
   return (
     <main>
@@ -39,13 +39,14 @@ export default async function UsersPage ({
         <ReusableTable
           customPagination={{
             type         : 'offset',
-            totalRecords : totalRecords ?? 0,
+            totalRecords : data?.totalRecords ?? 0,
             sortBy       : 'name',
             sortOrder    : 'asc'
           }}
+          loading={isLoading}
           columns={columns}
           actionButtons={actionButtons}
-          data={data ?? []}
+          data={data?.data ?? []}
         />
       </div>
     </main>

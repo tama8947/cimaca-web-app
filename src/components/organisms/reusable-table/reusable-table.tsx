@@ -88,7 +88,7 @@ export default function ReusableTable<T extends object> ({
                   sortConfig={{ sortField: 'sortField', sortOrder: 1, handleSort }}
                   />
               }
-              // loading={(loading ?? false) || isLoadingURL}
+              loading={(loading ?? false) }
               // globalFilter={globalFilterValue}
               emptyMessage="No customers found."
           >

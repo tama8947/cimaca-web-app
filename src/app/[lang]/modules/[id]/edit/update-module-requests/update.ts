@@ -2,17 +2,17 @@ import axios from 'axios';
 import { useRouter } from 'next/navigation';
 import { useContext } from 'react';
 import { useMutation } from 'react-query';
-import { redirectionOnCreateOrUpdate, singularName } from '../../metadata';
-import { type ModuleCreateData } from '../create-module-form-config/schema';
+import { redirectionOnCreateOrUpdate, singularName } from '../../../metadata';
+import { type ModuleUpdateData } from '../update-module-form-config/schema';
 import { NotificationContext } from '@/components/layouts/app-layout/contexts/custom-context';
 
-type TypeModule = ModuleCreateData;
+type TypeModule = ModuleUpdateData;
 
 const requestUpdate = async (data: TypeModule) => {
-  return (await axios.post('/api/modules/modules/create', data)).data;
+  return (await axios.post('/api/modules/modules/update', data)).data;
 };
 
-export const useCreateModule = () => {
+export const useUpdateModule = () => {
   const router = useRouter();
   const toast = useContext(NotificationContext);
 
@@ -44,5 +44,5 @@ export const useCreateModule = () => {
       }
     }
   });
-  return { create: mutation.mutate as (data: TypeModule) => Promise<void> };
+  return { update: mutation.mutate as (data: TypeModule) => Promise<void> };
 };

@@ -2,7 +2,7 @@ import axios from 'axios';
 import { useSession } from 'next-auth/react';
 import { useQuery } from 'react-query';
 
-export type ModuleData = {
+export type ModuleMenuData = {
   created_at: Date
   icon: string
   id: string
@@ -14,7 +14,7 @@ export type ModuleData = {
 }
 
 export type RoleReadPermissions = {
-  module: ModuleData
+  module: ModuleMenuData
   module_id: string
   permissions: string[]
   role_id: string
